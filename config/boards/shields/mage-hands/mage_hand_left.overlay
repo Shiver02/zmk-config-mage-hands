@@ -1,0 +1,18 @@
+#include "mage_hand.dtsi"
+
+&kscan0 {
+    col-gpios
+        = <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        ;
+};
+
+//REMOVE?
+&left_encoder {
+	status = "okay";
+};

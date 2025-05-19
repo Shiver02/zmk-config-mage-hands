@@ -1,0 +1,15 @@
+#include "mage_hand.dtsi"
+
+&default_transform { 
+    col-offset = <7>;
+};
+
+&kscan0 {
+    col-gpios
+        = <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        ;
+};
