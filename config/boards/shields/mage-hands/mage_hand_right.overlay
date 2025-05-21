@@ -25,16 +25,12 @@
 //=========//
 // ENCODER //
 //=========//
-&right_encoder {
-	status = "okay";
-};
-
-right_encoder: encoder_right {
+right_encoder: right_encoder {
     compatible = "alps,ec11";
     a-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
     b-gpios = <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
     steps = <6>;
-    status = "disabled";
+	status = "okay";
 };
 
 sensors: sensors {
@@ -94,7 +90,7 @@ sensors: sensors {
         pinctrl-1 = <&spi0_sleep>;
         pinctrl-names = "default", "sleep";
         cs-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
-    }
+    };
 };
 
 // Overrides for the input-split child node
