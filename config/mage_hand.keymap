@@ -89,7 +89,7 @@ nice_view_spi: &spi0 {
                                                                            &kp SPACE  LAY(NUMPAD)     LAY(NAVIG)   &kp SPACE   
 //                                                           ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 //                                                           ┃     P     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     L     ┃
-                                                               &kp LALT    &kp LCTRL  LAY(NAVIG)       &kp WIN     &kp BSPC    &kp M
+//                                                               &kp LALT    &kp LCTRL  LAY(NAVIG)       &kp WIN     &kp BSPC    &kp M
 //                                                           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
