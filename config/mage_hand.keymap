@@ -38,16 +38,6 @@
             bindings = <&mo>, <&tog>;
         };
     };
-
-    keymap {
-        compatible = "zmk,keymap";
-        default_layer {
-            bindings = <
-                &mo_tog 2 1     // &mo 2 on hold, &tog 1 on tap
-                LAY(3)          // &mo 3 on hold, &tog 3 on tap
-            >;
-        };
-    };
 };
 
 
@@ -89,7 +79,7 @@ nice_view_spi: &spi0 {
                                                                            &kp SPACE  LAY(NUMPAD)     LAY(NAVIG)   &kp SPACE   
 //                                                           ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 //                                                           ┃     P     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     L     ┃
-//                                                               &kp LALT    &kp LCTRL  LAY(NAVIG)       &kp WIN     &kp BSPC    &kp M
+                                                               &kp LALT    &kp LCTRL  LAY(NAVIG)       &kp WIN     &kp BSPC    &kp M
 //                                                           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
