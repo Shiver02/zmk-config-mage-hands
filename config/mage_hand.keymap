@@ -87,10 +87,10 @@ nice_view_spi: &spi0 {
                 &kp ESC    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp GRAVE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                                                       ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃
-                                                                           &kp SPACE  &LAY(NUMPAD)    &LAY(NAVIG)  &kp SPACE   
+                                                                           &kp SPACE  &LAY(NUMPAD)      &LAY(1)    &kp SPACE   
 //                                                           ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 //                                                           ┃     P     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     L     ┃
-                                                               &kp LALT    &kp LCTRL  &LAY(NAVIG)       &kp WIN    &kp BSPC     &kp RET
+                                                               &kp LALT    &kp LCTRL    &LAY(1)         &kp WIN    &kp BSPC     &kp RET
 //                                                           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             >;
@@ -105,8 +105,8 @@ nice_view_spi: &spi0 {
 &kp ESC    &kp CAPS   &kp A      &kp S      &kp D      &kp F        &kp G             &kp H        &kp J      &kp K      &kp L      &kp SEMI   &kp SQT    &kp GRAVE
 &kp ESC    &kp LSHFT  &kp Z      &kp X      &kp C      &kp V        &kp B             &kp N        &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp GRAVE
 &kp ESC    &kp LSHFT  &kp Z      &kp X      &kp C      &kp V        &kp B             &kp N        &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp GRAVE
-                                                       &kp SPACE    &MO_TOG(NUMPAD)   &MO_TOG(DEFAULT)   &kp SPACE   
-                                            &kp LALT   &kp LCTRL    &MO_TOG(NAVIG)    &kp WIN      &kp BSPC   &kp RET
+                                                       &kp SPACE    &LAY(NUMPAD)      &LAY(DEFAULT) &kp SPACE   
+                                            &kp LALT   &kp LCTRL    &LAY(NAVIG)       &kp WIN      &kp BSPC   &kp RET
             >;
         };
 
@@ -119,8 +119,8 @@ nice_view_spi: &spi0 {
 &kp ESC    &kp CAPS   &kp A      &kp S      &kp D      &kp F        &kp G             &kp H        &kp J      &kp K      &kp L      &kp SEMI   &kp SQT    &kp GRAVE
 &kp ESC    &kp LSHFT  &kp Z      &kp X      &kp C      &kp V        &kp B             &kp N        &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp GRAVE
 &kp ESC    &kp LSHFT  &kp Z      &kp X      &kp C      &kp V        &kp B             &kp N        &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp GRAVE
-                                                       &kp SPACE    &MO_TOG(NUMPAD)   &MO_TOG(DEFAULT)  &kp SPACE   
-                                            &kp LALT   &kp LCTRL    &MO_TOG(NAVIG)    &kp WIN      &kp BSPC   &kp RET
+                                                       &kp SPACE    &LAY(NUMPAD)      &LAY(DEFAULT)  &kp SPACE   
+                                            &kp LALT   &kp LCTRL    &LAY(NAVIG)       &kp WIN      &kp BSPC   &kp RET
             >;
         };
 
