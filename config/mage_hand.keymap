@@ -44,7 +44,7 @@
         default_layer {
             bindings = <
                 &mo_tog 2 1     // &mo 2 on hold, &tog 1 on tap
-                MO_TOG(3)       // &mo 3 on hold, &tog 3 on tap
+                LAY(3)          // &mo 3 on hold, &tog 3 on tap
             >;
         };
     };
