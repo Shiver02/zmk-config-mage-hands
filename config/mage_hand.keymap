@@ -69,7 +69,6 @@ nice_view_spi: &spi0 {
             display-name = " Home";
             sensor-bindings =                                                                                                                               <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
-
 //           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
 //           ┃     Q     ┃     W     ┃     F     ┃     P     ┃     G     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     U     ┃     Y     ┃     ;     ┃     P     ┃   VOLUME  ┃
                 &kp ESC     &kp ESC     &kp N1      &kp N2      &kp N3      &kp N4      &kp N5           &kp N6     &kp N7      &kp N8      &kp N9      &kp N0     &kp BSLH    //ENCODER
@@ -87,7 +86,7 @@ nice_view_spi: &spi0 {
                 &kp ESC    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp GRAVE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                                                       ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃
-                                                                           &kp SPACE  &LAY(NUMPAD)      &LAY(1)    &kp SPACE   
+                                                                           &kp SPACE    &LAY(2)         &LAY(1)    &kp SPACE   
 //                                                           ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 //                                                           ┃     P     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     L     ┃
                                                                &kp LALT    &kp LCTRL    &LAY(1)         &kp WIN    &kp BSPC     &kp RET
