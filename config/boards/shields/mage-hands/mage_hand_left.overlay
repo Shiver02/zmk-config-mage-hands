@@ -43,7 +43,7 @@
         };
     };
 };
-
+/*
 &pinctrl {
     spi2_default: spi2_default {
         group1 {
@@ -63,7 +63,7 @@
         };
     };
 };
-
+*/
 
 &spi0 {
     status = "okay";
@@ -101,7 +101,7 @@
     };
 };
 */
-
+/*
 nice_view_spi: &spi2 {
     compatible = "nordic,nrf-spim";
     pinctrl-0 = <&spi2_default>;
@@ -110,7 +110,7 @@ nice_view_spi: &spi2 {
     cs-gpios = <&pro_micro 16 GPIO_ACTIVE_HIGH>; //nice!nano 014
     status = "okay";
 };
-
+*/
 // Overrides for the input listener node
 &trackball_scroller_listener {
     status = "okay";
