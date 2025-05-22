@@ -20,10 +20,17 @@
 };
 
 
+//=========//
+// ENCODER //
+//=========//
 &right_encoder {
     status = "okay";
 };
 
+
+//======================//
+// TRACKBALL AND SCREEN //
+//======================//
 &trackball_peripheral_split {
     device = <&right_trackball>;
 };
@@ -220,6 +227,6 @@ sensors: sensors {
 / {
 	chosen {
 		zmk,underglow  = &led_strip;
-        //zephyr,display = &nice_view;
+		zephyr,display = &nice_view;
     };
 };
