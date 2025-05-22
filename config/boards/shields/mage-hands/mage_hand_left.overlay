@@ -1,6 +1,14 @@
 #include "mage_hand.dtsi"
 
 
+
+/ {
+	chosen {
+		zmk,underglow  = &led_strip;
+		zephyr,display = &nice_view;
+    };
+};
+
 //======//
 // KEYS //
 //======//
@@ -44,7 +52,6 @@
 	};
 };
 
-/*
 nice_view_spi: &spi2 {
 	status = "okay";
 	compatible = "nordic,nrf-spim";
@@ -53,13 +60,7 @@ nice_view_spi: &spi2 {
 	pinctrl-1 = <&screen_sleep>;
 	pinctrl-names = "default", "sleep";
 	cs-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
-
-    nice_view: nice_view@0 {
-        status     = "okay";
-        reg        = <0>;
-    };
 };
-*/
 
 
 //======================//
@@ -229,12 +230,4 @@ nice_view_spi: &spi2 {
 
 		color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
 	};
-};
-
-
-/ {
-	chosen {
-		zmk,underglow  = &led_strip;
-		//zephyr,display = &nice_view;
-    };
 };
