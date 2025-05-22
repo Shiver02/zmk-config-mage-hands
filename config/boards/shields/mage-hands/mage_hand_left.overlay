@@ -25,7 +25,7 @@
 
 &spi3 {
 	status = "okay";
-	compatible = "nordic,nrf-spim";sa
+	compatible = "nordic,nrf-spim";
 	pinctrl-0 = <&trackball_default>;
 	pinctrl-1 = <&trackball_sleep>;
 	pinctrl-names = "default", "sleep";
@@ -52,6 +52,9 @@ nice_view_spi: &spi2 {
 	pinctrl-1 = <&screen_sleep>;
 	pinctrl-names = "default", "sleep";
 	cs-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+
+    nice_view: nice_view@0 {
+    }
 };
 
 
