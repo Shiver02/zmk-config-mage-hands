@@ -24,6 +24,7 @@
 //======================//
 // TRACKBALL AND SCREEN //
 //======================//
+/*
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -43,6 +44,7 @@
         };
     };
 };
+*/
 /*
 &pinctrl {
     spi2_default: spi2_default {
@@ -64,7 +66,7 @@
     };
 };
 */
-
+/*
 &spi0 {
     status = "okay";
     compatible = "nordic,nrf-spim";
@@ -85,6 +87,8 @@
         irq-gpios = <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
 };
+*/
+
 /*
 &spi2 {
     status = "okay";
@@ -100,8 +104,7 @@
         reg        = <0>;
     };
 };
-*/
-/*
+
 nice_view_spi: &spi2 {
     compatible = "nordic,nrf-spim";
     pinctrl-0 = <&spi2_default>;
@@ -112,13 +115,13 @@ nice_view_spi: &spi2 {
 };
 */
 
-
+/*
 // Overrides for the input listener node
 &trackball_scroller_listener {
     status = "okay";
     device = <&trackball_scroller>;
 };
-
+*/
 
 //======//
 // LEDS //
