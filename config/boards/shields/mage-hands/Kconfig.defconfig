@@ -14,4 +14,29 @@ if SHIELD_MAGE_HAND_LEFT || SHIELD_MAGE_HAND_RIGHT
 config ZMK_SPLIT
     default y
 
+config SHIELD_TRACKBALL
+    bool "PMW3610 trackball"
+    imply SPI
+    imply PMW3610
+    imply ZMK_POINTING
+    imply ZMK_POINTING_SMOOTH_SCROLLING
+    depends on DT_HAS_PIXART_PMW3610_ENABLED
+    
+config SHIELD_UNDERGLOW
+    bool "Per-key RGB"
+    imply SPI
+    imply WS2812_STRIP
+    imply ZMK_RGB_UNDERGLOW
+    # imply ZMK_RGB_UNDERGLOW_EXT_POWER
+    depends on DT_HAS_WORLDSEMI_WS2812_SPI_ENABLED
+
+endif
+
+if SHIELD_MAGE_HAND_RIGHT
+
+    config SHIELD_ENCODER
+        bool "Rotary EC11 encoder"
+        imply EC11
+        depends on DT_HAS_ALPS_EC11_ENABLED
+
 endif

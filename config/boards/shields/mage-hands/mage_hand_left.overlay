@@ -1,6 +1,4 @@
 #include "mage_hand.dtsi"
-#include <zephyr/dt-bindings/input/input-event-codes.h>
-#include <dt-bindings/led/led.h>
 
 
 //======//
