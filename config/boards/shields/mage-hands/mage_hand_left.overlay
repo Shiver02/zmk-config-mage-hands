@@ -59,7 +59,7 @@
         reg        = <0>;
     };
 
-    trackball_pointer: trackball_pointer@1 {
+    trackball_scroller: trackball_scroller@1 {
         compatible = "pixart,pmw3610";
         status     = "okay";
         reg        = <1>;
