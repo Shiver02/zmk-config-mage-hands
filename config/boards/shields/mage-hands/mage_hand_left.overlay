@@ -99,7 +99,7 @@
         status     = "okay";
         reg        = <0>;
     };
-}
+};
 
 // Overrides for the input listener node
 &trackball_scroller_listener {
