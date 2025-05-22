@@ -79,12 +79,7 @@ nice_view_spi: &spi0 {
                                                                            &kp SPACE  LAY(NUMPAD)     LAY(NAVIG)   &kp SPACE   
 //                                                           ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 //                                                           ┃     P     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     L     ┃
-                                                               &kp LALT    
-                                                               &kp LCTRL  
-                                                               &mo_tog 1 1    
-                                                               &kp WIN     
-                                                               &kp BSPC     
-                                                               &kp M
+                                                               &kp LALT    &kp LCTRL  LAY(NAVIG)       &kp LMETA   &kp BSPC      &kp M
 //                                                           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -99,7 +94,7 @@ nice_view_spi: &spi0 {
 &kp ESC    &kp LSHFT  &kp Z      &kp X      &kp C      &kp V        &kp B             &kp N        &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp GRAVE
 &kp ESC    &kp LSHFT  &kp Z      &kp X      &kp C      &kp V        &kp B             &kp N        &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp GRAVE
                                                        &kp SPACE    LAY(NUMPAD)       LAY(DEFAULT) &kp SPACE   
-                                            &kp LALT   &kp LCTRL    LAY(NAVIG)        &kp WIN      &kp BSPC   &kp ENTER
+                                            &kp LALT   &kp LCTRL    LAY(NAVIG)        &kp LMETA    &kp BSPC   &kp ENTER
             >;
         };
 
@@ -113,7 +108,7 @@ nice_view_spi: &spi0 {
 &kp ESC    &kp LSHFT  &kp Z      &kp X      &kp C      &kp V        &kp B             &kp N        &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp GRAVE
 &kp ESC    &kp LSHFT  &kp Z      &kp X      &kp C      &kp V        &kp B             &kp N        &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp GRAVE
                                                        &kp SPACE    LAY(NUMPAD)      LAY(DEFAULT)  &kp SPACE   
-                                            &kp LALT   &kp LCTRL    LAY(NAVIG)       &kp WIN       &kp BSPC   &kp ENTER
+                                            &kp LALT   &kp LCTRL    LAY(NAVIG)       &kp LMETA     &kp BSPC   &kp ENTER
             >;
         };
 
