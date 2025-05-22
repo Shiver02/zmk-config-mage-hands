@@ -52,7 +52,7 @@
     pinctrl-names = "default", "sleep";
     cs-gpios = <&gpio1 0 GPIO_ACTIVE_LOW>,<&gpio0 6 GPIO_ACTIVE_HIGH>;
     
-    trackball_peripheral: trackball_peripheral@0 {
+    trackball_scroller: trackball_scroller@0 {
         compatible = "pixart,pmw3610";
         status     = "okay";
         reg        = <0>;
@@ -75,9 +75,9 @@
 };
 
 // Overrides for the input listener node
-&trackball_central_listener {
+&trackball_scroller_listener {
     status = "okay";
-    device = <&trackball_central>;
+    device = <&trackball_scroller>;
 };
 
 

@@ -69,9 +69,9 @@ sensors: sensors {
     pinctrl-0 = <&spi0_default>;
     pinctrl-1 = <&spi0_sleep>;
     pinctrl-names = "default", "sleep";
-    cs-gpios = <&gpio1 0 GPIO_ACTIVE_LOW>, <&gpio0 6 GPIO_ACTIVE_HIGH>;
+    cs-gpios = <&gpio1 0 GPIO_ACTIVE_LOW>,<&gpio0 6 GPIO_ACTIVE_HIGH>;
     
-    trackball_peripheral: trackball_peripheral@0 {
+    trackball_pointer: trackball_pointer@0 {
         compatible = "pixart,pmw3610";
         status     = "okay";
         reg        = <0>;
@@ -94,8 +94,8 @@ sensors: sensors {
 };
 
 // Overrides for the input-split child node
-&trackball_peripheral_split {
-    device = <&trackball_peripheral>;
+&trackball_pointer_split {
+    device = <&trackball_pointer>;
 };
 
 
