@@ -41,7 +41,7 @@
             ;
     };
 
-    
+
 //right hand trackball
     split_inputs {
         #address-cells = <1>;
@@ -73,7 +73,6 @@
 	<&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>,
 	<&zip_scroll_transform INPUT_TRANSFORM_XY_SWAP>;
     };
-};
 
 
 
