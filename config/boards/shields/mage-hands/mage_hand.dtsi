@@ -41,7 +41,8 @@
             ;
 
     };
-
+    
+/*
     //right hand trackball
     split_inputs {
         #address-cells = <1>;
@@ -63,7 +64,8 @@
             <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,
             <&zip_temp_layer 3 500>;
     };
-
+    */
+/*
     //left hand trackball
     trackball_scroller_listener: trackball_scroller_listener {
         compatible = "zmk,input-listener";
@@ -75,4 +77,6 @@
             <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>,
             <&zip_scroll_transform INPUT_TRANSFORM_XY_SWAP>;
     };
+*/
+
 };
