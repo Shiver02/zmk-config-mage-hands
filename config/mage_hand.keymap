@@ -45,11 +45,10 @@
  * Assign the cs-gpios pin to 4.
  * Uncomment these next few lines if implementing nice!view Displays
  */
- /*
 nice_view_spi: &spi0 {
   cs-gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>;  //<&pro_micro 4 GPIO_ACTIVE_HIGH>;
 };
-*/
+
 
 / {
 
