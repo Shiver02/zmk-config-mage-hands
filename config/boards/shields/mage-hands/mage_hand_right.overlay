@@ -44,6 +44,7 @@ sensors: sensors {
 //======================//
 // TRACKBALL AND SCREEN //
 //======================//
+/*
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -63,6 +64,7 @@ sensors: sensors {
         };
     };
 };
+*/
 
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 &spi0 {
@@ -78,8 +80,6 @@ sensors: sensors {
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
-        pinctrl-0 = <&spi0_default>;
-        pinctrl-1 = <&spi0_sleep>;
     };
 };
 
