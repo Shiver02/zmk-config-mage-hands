@@ -81,7 +81,7 @@ nice_view_spi: &spi0 {
 //                                                           ┃     P     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     L     ┃
                                                                &kp LALT    
                                                                &kp LCTRL  
-                                                               LAY(NAVIG)       
+                                                               &mo_tog 1 1    
                                                                &kp WIN     
                                                                &kp BSPC     
                                                                &kp M
