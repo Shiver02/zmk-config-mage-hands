@@ -21,6 +21,6 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: mage_hand_left
+    shield: mage_hand_left nice_view
   - board: nice_nano_v2
     shield: mage_hand_right nice_view

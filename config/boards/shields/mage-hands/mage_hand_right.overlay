@@ -44,7 +44,7 @@
     device = <&right_trackball>;
 };
 
-&spi3 {
+&spi0 {
 	status = "okay";
 	compatible = "nordic,nrf-spim";
 	pinctrl-0 = <&trackball_default>;
@@ -65,7 +65,7 @@
 	};
 };
 
-nice_view_spi: &spi2 {
+nice_view_spi: &spi1 {
 	status = "okay";
 	compatible = "nordic,nrf-spim";
 	
@@ -207,7 +207,7 @@ sensors: sensors {
 	};
 };
 
-&spi1 {
+&spi2 {
     compatible = "nordic,nrf-spim";
     status     = "okay";
 
