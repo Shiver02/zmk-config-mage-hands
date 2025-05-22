@@ -38,12 +38,3 @@ if SHIELD_MAGE_HAND_LEFT || SHIELD_MAGE_HAND_RIGHT
         depends on DT_HAS_SHARP_LS0XX_ENABLED
 
 endif
-
-if SHIELD_MAGE_HAND_RIGHT
-
-    config SHIELD_ENCODER
-        bool "Rotary EC11 encoder"
-        imply EC11
-        depends on DT_HAS_ALPS_EC11_ENABLED
-
-endif

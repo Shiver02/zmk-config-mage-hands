@@ -54,10 +54,12 @@ nice_view_spi: &spi2 {
 	cs-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
 
     nice_view: nice_view@0 {
+        status     = "okay";
+        reg        = <0>;
     };
 };
 
-
+as
 //======================//
 // TRACKBALL AND SCREEN //
 //======================//

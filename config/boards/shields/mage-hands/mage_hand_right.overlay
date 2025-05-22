@@ -64,6 +64,11 @@ nice_view_spi: &spi2 {
 	pinctrl-1 = <&screen_sleep>;
 	pinctrl-names = "default", "sleep";
 	cs-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+
+    nice_view: nice_view@0 {
+        status     = "okay";
+        reg        = <0>;
+    };
 };
 
 
