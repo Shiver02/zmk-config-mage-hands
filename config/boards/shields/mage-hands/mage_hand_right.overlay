@@ -1,7 +1,5 @@
 #include "mage_hand.dtsi"
 
-
-
 / {
 	chosen {
 		zmk,underglow  = &led_strip;
@@ -32,10 +30,11 @@
 //=========//
 // ENCODER //
 //=========//
+/*
 &right_encoder {
     status = "okay";
 };
-
+*/
 
 //======================//
 // TRACKBALL AND SCREEN //
@@ -74,119 +73,6 @@ nice_view_spi: &spi1 {
 	pinctrl-names = "default", "sleep";
 	cs-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
 };
-
-//=========//
-// ENCODER //
-//=========//
-/*
-right_encoder: right_encoder {
-    compatible = "alps,ec11";
-    a-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    b-gpios = <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    steps = <6>;
-	status = "okay";
-};
-
-sensors: sensors {
-    compatible = "zmk,keymap-sensors";
-    sensors = <&right_encoder>;
-    triggers-per-rotation = <6>;
-};
-*/
-
-//======================//
-// TRACKBALL AND SCREEN //
-//======================//
-/*
-&pinctrl {
-    spi0_default: spi0_default {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK,  0, 17)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 20)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 20)>;
-
-        };
-    };
-
-    spi0_sleep: spi0_sleep {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK,  0, 17)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 20)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 20)>;
-            low-power-enable;
-        };
-    };
-};
-*/
-
-/*
-&spi0 {
-    cs-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
-
-    trackball_peripheral: trackball_peripheral@0 {
-        status = "okay";
-        compatible = "pixart,pmw3610";
-        reg = <0>;
-        spi-max-frequency = <2000000>;
-        irq-gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        cpi = <600>;
-        evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_X>;
-        y-input-code = <INPUT_REL_Y>;
-    };
-};
-
-// Overrides for the input-split child node
-&trackball_peripheral_split {
-    device = <&trackball_peripheral>;
-};
-*/
-
-
-/*
-&spi0 {
-    status = "okay";
-    compatible = "nordic,nrf-spim";
-    pinctrl-0 = <&spi0_default>;
-    pinctrl-1 = <&spi0_sleep>;
-    pinctrl-names = "default", "sleep";
-    cs-gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
-    
-    nice_view: nice_view@0 {
-        compatible = "nordic,nrf-spim";
-        status     = "okay";
-        reg        = <0>;
-    };
-
-    trackball_pointer: trackball_pointer@1 {
-        compatible = "pixart,pmw3610";
-        status     = "okay";
-        reg        = <1>;
-        spi-max-frequency = <2000000>;
-        cpi = <600>;
-        evt-type     = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_X>;
-        y-input-code = <INPUT_REL_Y>;
-        irq-gpios = <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-    };
-};
-
-    // Overrides for the input-split child node
-    &trackball_pointer_split {
-        device = <&trackball_pointer>;
-    };
-
-    //right hand trackball
-    split_inputs {
-        #address-cells = <1>;
-        #size-cells = <0>;
-
-        trackball_pointer_split: trackball_pointer_split@0 {
-            compatible = "zmk,input-split";
-            reg = <0>;
-        };
-    };
-*/
 
 
 //======//
