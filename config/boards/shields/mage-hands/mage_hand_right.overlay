@@ -64,6 +64,33 @@ sensors: sensors {
     };
 };
 
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+&spi0 {
+    cs-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
+
+    trackball_peripheral: trackball_peripheral@0 {
+        status = "okay";
+        compatible = "pixart,pmw3610";
+        reg = <0>;
+        spi-max-frequency = <2000000>;
+        irq-gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        cpi = <600>;
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
+        pinctrl-0 = <&spi0_default>;
+        pinctrl-1 = <&spi0_sleep>;
+    };
+};
+
+// Overrides for the input-split child node
+&trackball_peripheral_split {
+    device = <&trackball_peripheral>;
+};
+
+
+
+/*
 &spi0 {
     status = "okay";
     compatible = "nordic,nrf-spim";
@@ -93,10 +120,22 @@ sensors: sensors {
     };
 };
 
-// Overrides for the input-split child node
-&trackball_pointer_split {
-    device = <&trackball_pointer>;
-};
+    // Overrides for the input-split child node
+    &trackball_pointer_split {
+        device = <&trackball_pointer>;
+    };
+
+    //right hand trackball
+    split_inputs {
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        trackball_pointer_split: trackball_pointer_split@0 {
+            compatible = "zmk,input-split";
+            reg = <0>;
+        };
+    };
+*/
 
 
 //======//
