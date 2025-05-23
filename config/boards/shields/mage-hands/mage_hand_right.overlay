@@ -30,11 +30,10 @@
 //=========//
 // ENCODER //
 //=========//
-/*
 &right_encoder {
     status = "okay";
 };
-*/
+
 
 //======================//
 // TRACKBALL AND SCREEN //
@@ -50,16 +49,7 @@ nice_view_spi: &spi1 {
 	pinctrl-1 = <&trackball_sleep>;
 	pinctrl-names = "default", "sleep";
 	cs-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>, <&gpio0 4 GPIO_ACTIVE_LOW>;
-/*
-    nice_view_screen: nice_view_screen@0{
-        status            = "okay";
-        compatible        = "sharp,ls0xx";
-        spi-max-frequency = <1000000>;
-        reg               = <0>;
-        width = <160>;
-        height = <68>;
-    };
-*/    
+ 
 	right_trackball: right_trackball@1 {
 		status = "okay";
 		compatible = "pixart,pmw3610";
