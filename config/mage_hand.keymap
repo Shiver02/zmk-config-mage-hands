@@ -13,6 +13,7 @@
 #define DEFAULT 0
 #define NAVIG   1
 #define NUMPAD  2
+#define MOUSE   3
 
 // Short versions
 #define RGBON   &rgb_ug RGB_ON
@@ -26,8 +27,14 @@
 #define RGBBRD  &rgb_ug RGB_BRD
 #define RGBEFF  &rgb_ug RGB_EFF
 
-#define LAY(layer) &mo_tog layer layer   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
+#define _PLAY_ &kp C_PLAY_PAUSE
+#define _PAUSE_ &kp PAUSE_BREAK
+#define _MULT_ &kp KP_MULTIPLY
+#define _DIV_ &kp KP_SLASH
 
+#define BT_PROF &bt BT_SEL
+
+#define LAY(layer) &mo_tog layer layer   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
 / {
     behaviors {
         mo_tog: behavior_mo_tog {
@@ -36,6 +43,12 @@
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo>, <&tog>;
+        };
+        
+        rot_mouse_scroll: sensor_rotate_kp {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
         };
     };
 };
@@ -50,55 +63,102 @@
             sensor-bindings =                                                                                                                               <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
 //           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
-//           ┃     Q     ┃     W     ┃     F     ┃     P     ┃     G     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     U     ┃     Y     ┃     ;     ┃     P     ┃   VOLUME  ┃
-                &kp ESC     &kp ESC     &kp N1      &kp N2      &kp N3      &kp N4      &kp N5           &kp N6     &kp N7      &kp N8      &kp N9      &kp N0     &kp BSLH    //ENCODER
+//           ┃    ESC    ┃     F1    ┃     F2    ┃     F3    ┃     F4    ┃     F5    ┃     F6    ┃   ┃     F7    ┃     F8    ┃     F9    ┃    F10    ┃    F11    ┃    F12    ┃   VOLUME  ┃
+                &kp ESC      &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp F6          &kp F7      &kp F8      &kp F9     &kp F10     &kp F11     &kp F12    //ENCODER
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃     Q     ┃     W     ┃     F     ┃     P     ┃     G     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     U     ┃     Y     ┃     ;     ┃     P     ┃     P     ┃
-                &kp ESC     &kp TAB      &kp Q       &kp W       &kp E       &kp R       &kp T           &kp Y       &kp U       &kp I       &kp O       &kp P     &kp GRAVE   &kp GRAVE
+//           ┃    ` ~    ┃     1     ┃     2     ┃     3     ┃     4     ┃     5     ┃     6     ┃   ┃     7     ┃     8     ┃     9     ┃     0     ┃     -     ┃     =     ┃Play/Pause ┃
+               &kp GRAVE    &kp N1      &kp N2      &kp N3      &kp N4      &kp N5      &kp N6          &kp N7      &kp N8      &kp N9      &kp N0     &kp MINUS   &kp EQUAL    _PLAY_
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃     Q     ┃     W     ┃     F     ┃     P     ┃     G     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     U     ┃     Y     ┃     ;     ┃     P     ┃     P     ┃
-                &kp ESC    &kp CAPS      &kp A      &kp S        &kp D      &kp F        &kp G           &kp H       &kp J       &kp K       &kp L     &kp SEMI     &kp SQT    &kp GRAVE
+//           ┃     G1    ┃    TAB    ┃     Q     ┃     W     ┃     E     ┃     R     ┃     T     ┃   ┃     Y     ┃     U     ┃     I     ┃     O     ┃     -     ┃     =     ┃   NEXT    ┃
+                &kp F13    &kp CAPS      &kp A      &kp S        &kp D      &kp F        &kp G           &kp H       &kp J       &kp K       &kp L     &kp SEMI     &kp SQT   &kp  C_NEXT
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃     Q     ┃     W     ┃     F     ┃     P     ┃     G     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     U     ┃     Y     ┃     ;     ┃     P     ┃     P     ┃
-                &kp ESC    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp GRAVE
+//           ┃     G2    ┃    CAPS   ┃     A     ┃     S     ┃     D     ┃     F     ┃     G     ┃   ┃     H     ┃     J     ┃     K     ┃     L     ┃     ;     ┃     '     ┃   PREV    ┃
+                &kp F14    &kp CAPS      &kp A      &kp S        &kp D      &kp F        &kp G           &kp H       &kp J       &kp K       &kp L     &kp SEMI     &kp SQT   &kp  C_PREV
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃     Q     ┃     W     ┃     F     ┃     P     ┃     G     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     U     ┃     Y     ┃     ;     ┃     P     ┃     P     ┃
-                &kp ESC    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp GRAVE
-//           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                                                       ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃
-                                                                           &kp SPACE  LAY(NUMPAD)     LAY(NAVIG)   &kp SPACE   
-//                                                           ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
-//                                                           ┃     P     ┃     P     ┃     P     ┃   ┃     J     ┃     L     ┃     L     ┃
-                                                               &kp LALT    &kp LCTRL  LAY(NAVIG)       &kp LMETA   &kp BSPC      &kp M
-//                                                           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+//           ┃     G3    ┃   SHIFT   ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     N     ┃     M     ┃     ,     ┃     .     ┃     /     ┃   SHIFT   ┃   MUTE    ┃
+                &kp F15    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
+//           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+//                                   ┃   SPACE   ┃  NUMPAD   ┃    ALT    ┃   CTRL    ┃   MOUSE   ┃   ┃    WIN    ┃ BACKSPACE ┃    ALT    ┃   NAVIG   ┃   SPACE   ┃
+                                       &kp SPACE  LAY(NUMPAD)  &kp LALT    &kp LCTRL  LAY(MOUSE)       &kp LMETA   &kp BSPC     &kp RET    LAY(NAVIG)   &kp SPACE   
+//                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
 
         navig_layer {
             display-name = " Navig";
-            sensor-bindings =                                                                                                                <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings =                                                                                                                                           <&inc_dec_kp UP DOWN>;
             bindings = <
-&kp ESC    &kp ESC    &kp N1     &kp N2     &kp N3     &kp N4       &kp N5            &kp N6       &kp N7     &kp N8     &kp N9     &kp N0     &kp BSLH 
-&kp ESC    &kp TAB    &bt BT_CLR &kp W      &kp E      &kp R        &kp T             &kp Y        &kp U      &kp I      &kp O      &kp P      &kp GRAVE  &kp GRAVE
-&kp ESC    &kp CAPS   &kp A      &kp S      &kp D      &kp F        &kp G             &kp H        &kp J      &kp K      &kp L      &kp SEMI   &kp SQT    &kp GRAVE
-&kp ESC    &kp LSHFT  &kp Z      &kp X      &kp C      &kp V        &kp B             &kp N        &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp GRAVE
-&kp ESC    &kp LSHFT  &kp Z      &kp X      &kp C      &kp V        &kp B             &kp N        &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp GRAVE
-                                                       &kp SPACE    LAY(NUMPAD)       LAY(DEFAULT) &kp SPACE   
-                                            &kp LALT   &kp LCTRL    LAY(NAVIG)        &kp LMETA    &kp BSPC   &kp ENTER
+//           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
+//           ┃           ┃   BT 1    ┃    BT 2   ┃    BT 3   ┃           ┃           ┃ BT CLEAR  ┃   ┃           ┃PRINT SCRN ┃SCROLL LCK ┃ PAUSE BRK ┃           ┃           ┃  UP/DOWN  ┃
+                 &trans    BT_PROF 1   BT_PROF 2   BT_PROF 3     &trans      &trans   &bt BT_CLR         &trans    &kp PSCRN    &kp SLCK    _PAUSE_      &trans      &trans    //ENCODER
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃  INSERT   ┃    HOME   ┃   PG UP   ┃           ┃           ┃           ┃
+                 RGBTOG      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp INS    &kp HOME    &kp PG_UP     &trans      &trans      &trans  
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃  DELETE   ┃    END    ┃  PG DOWN  ┃           ┃           ┃           ┃
+                 RGBBRI      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp DEL     &kp END    &kp PG_DN     &trans      &trans      &trans  
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     [     ┃  UP  ARW  ┃     ]     ┃           ┃           ┃           ┃
+                 RGBBRD      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp LBKT      &kp UP    &kp RBKT      &trans      &trans      &trans  
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ LEFT  ARW ┃ DOWN  ARW ┃ RIGHT ARW ┃           ┃           ┃           ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp LEFT   &kp DOWN    &kp RIGHT     &trans      &trans      &trans  
+//           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+//                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃
+                                         &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans
+//                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
 
         numpad_layer {
             display-name = " Numpad";
-            sensor-bindings =                                                                                                                <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings =                                                                                                                               <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
-&kp ESC    &kp ESC    &kp N1     &kp N2     &kp N3     &kp N4       &kp N5            &kp N6       &kp N7     &kp N8     &kp N9     &kp N0     &kp BSLH 
-&kp ESC    &kp TAB    &kp Q      &kp W      &kp E      &kp R        &kp T             &kp Y        &kp U      &kp I      &kp O      &kp P      &kp GRAVE  &kp GRAVE
-&kp ESC    &kp CAPS   &kp A      &kp S      &kp D      &kp F        &kp G             &kp H        &kp J      &kp K      &kp L      &kp SEMI   &kp SQT    &kp GRAVE
-&kp ESC    &kp LSHFT  &kp Z      &kp X      &kp C      &kp V        &kp B             &kp N        &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp GRAVE
-&kp ESC    &kp LSHFT  &kp Z      &kp X      &kp C      &kp V        &kp B             &kp N        &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RSHFT  &kp GRAVE
-                                                       &kp SPACE    LAY(NUMPAD)      LAY(DEFAULT)  &kp SPACE   
-                                            &kp LALT   &kp LCTRL    LAY(NAVIG)       &kp LMETA     &kp BSPC   &kp ENTER
+//           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
+//           ┃           ┃   BT 1    ┃    BT 2   ┃    BT 3   ┃           ┃           ┃ BT CLEAR  ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃   VOLUME  ┃
+                 &trans    BT_PROF 1   BT_PROF 2   BT_PROF 3     &trans      &trans   &bt BT_CLR         &trans      &trans      &trans      &trans      &trans      &trans    //ENCODER
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ NUM LOCK  ┃     /     ┃     *     ┃ BACKSPACE ┃           ┃           ┃
+                 RGBTOG      &trans      &trans      &trans      &trans      &trans      &trans          &trans   &kp KP_NUM     _DIV_       _MULT_    &kp BSPC      &trans      &trans  
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     7     ┃     8     ┃     9     ┃     -     ┃           ┃           ┃
+                 RGBBRI      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp KP_N7   &kp KP_N8   &kp KP_N9  &kp KP_MINUS   &trans      &trans  
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     4     ┃     5     ┃     6     ┃     +     ┃           ┃           ┃
+                 RGBBRD      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp KP_N4   &kp KP_N5   &kp KP_N6  &kp KP_PLUS      &trans      &trans  
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     1     ┃     2     ┃     3     ┃     .     ┃           ┃           ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_DOT      &trans      &trans  
+//           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+//                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃     0     ┃           ┃           ┃           ┃           ┃
+                                         &trans      &trans      &trans      &trans      &trans        &kp KP_N0     &trans      &trans      &trans      &trans
+//                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+            >;
+        };
+
+        mouse_layer {
+            display-name = " Mouse";
+            sensor-bindings =                                                                                                                                    <&rot_mouse_scroll SCRL_UP SCRL_DOWN>;
+            bindings = <
+//           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
+//           ┃           ┃   BT 1    ┃    BT 2   ┃    BT 3   ┃           ┃           ┃ BT CLEAR  ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃    MOUSE  ┃
+                 &trans    BT_PROF 1   BT_PROF 2   BT_PROF 3     &trans      &trans   &bt BT_CLR         &trans      &trans      &trans      &trans      &trans      &trans     //SCROLL
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans      &trans  
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans      &trans  
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ LEFT  CLK ┃ MID CLICK ┃ RIGHT CLK ┃           ┃           ┃           ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &mkp LCLK   &mkp MCLK   &mkp RCLK     &trans      &trans      &trans  
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans      &trans  
+//           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+//                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃  FORWARD  ┃           ┃           ┃    BACK   ┃
+                                         &trans      &trans      &trans      &trans      &trans          &trans    &mkp MB5     &trans      &trans      &mkp MB4
+//                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
 
