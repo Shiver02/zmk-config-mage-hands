@@ -3,7 +3,7 @@
 / {
 	chosen {
 		zmk,underglow  = &led_strip;
-		zephyr,display = &nice_view;
+		zephyr,display = &nice_view_screen;
     };
 };
 
@@ -43,14 +43,24 @@
     device = <&right_trackball>;
 };
 
-&spi0 {
+nice_view_spi: &spi1 {
 	status = "okay";
 	compatible = "nordic,nrf-spim";
 	pinctrl-0 = <&trackball_default>;
 	pinctrl-1 = <&trackball_sleep>;
 	pinctrl-names = "default", "sleep";
-	cs-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>;  //"sel2"
+	cs-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>, <&gpio0 4 GPIO_ACTIVE_LOW>;
 
+    nice_view_screen: nice_view_screen@0{
+        status     = "okay";
+        compatible = "sharp,ls0xx";
+        spi-max-frequency = <1000000>;
+        reg        = <1>;
+        pinctrl-0  = <&spi0_default>;
+        pinctrl-1  = <&spi0_sleep>;
+        pinctrl-names = "default", "sleep";
+    };
+    
 	right_trackball: right_trackball@0 {
 		status = "okay";
 		compatible = "pixart,pmw3610";
@@ -62,16 +72,6 @@
 		x-input-code = <INPUT_REL_X>;
 		y-input-code = <INPUT_REL_Y>;
 	};
-};
-
-nice_view_spi: &spi1 {
-	status = "okay";
-	compatible = "nordic,nrf-spim";
-	
-	pinctrl-0 = <&screen_default>;
-	pinctrl-1 = <&screen_sleep>;
-	pinctrl-names = "default", "sleep";
-	cs-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
 };
 
 
