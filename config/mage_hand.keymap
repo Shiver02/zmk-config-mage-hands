@@ -36,14 +36,14 @@
 #define BT_PROF &bt BT_SEL
 
 #define LAY(layer)      &mo_to        layer layer   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
-#define LAY_CYAN(layer) $mo_to_cyan   layer layer
-#define LAY_LIME(layer) $mo_to_lime   layer layer
-#define LAY_ORNG(layer) $mo_to_orange layer layer
-#define LAY_PINK(layer) $to_pink layer
+#define LAY_CYAN(layer) &mo_to_cyan   layer layer
+#define LAY_LIME(layer) &mo_to_lime   layer layer
+#define LAY_ORNG(layer) &mo_to_orange layer layer
+#define LAY_PINK(layer) &to_pink layer
 
 #define TO_HOME   LAY_PINK(DEFAULT)
-#define TO_NAVIG  LAY_PINK(NAVIG)//LAY_LIME(NAVIG)
-#define TO_NUMPAD LAY(NUMPAD)//LAY_ORNG(NUMPAD)
+#define TO_NAVIG  LAY_LIME(NAVIG)
+#define TO_NUMPAD LAY_ORNG(NUMPAD)
 #define TO_MOUSE  LAY_CYAN(MOUSE)
 
 / {
