@@ -43,51 +43,8 @@
 
 #define TO_HOME   LAY_PINK(DEFAULT)
 #define TO_NAVIG  LAY_LIME(NAVIG)
-#define TO_NUMPAD LAY_ORNG(NUMPAD)
+#define TO_NUMPAD LAY(NUMPAD)//LAY_ORNG(NUMPAD)
 #define TO_MOUSE  LAY_CYAN(MOUSE)
-
-
-/ {
-    behaviors {
-        mo_tog: behavior_mo_tog {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&to>; //TODO make each a macro with rgb?
-        };
-        
-        rot_mouse_scroll: sensor_rotate_kp {
-            compatible = "zmk,behavior-sensor-rotate-var";
-            #sensor-binding-cells = <2>;
-            bindings = <&msc>, <&msc>;
-        };
-                
-        mo_to_cyan: behavior_mo_to_cyan {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo_cyan>, <&to_cyan>; //TODO make each a macro with rgb?
-        };
-                
-        mo_to_lime: behavior_mo_to_lime {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo_lime>, <&to_lime>; //TODO make each a macro with rgb?
-        };
-                
-        mo_to_orange: behavior_mo_to_orange {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo_orange>, <&to_orange>; //TODO make each a macro with rgb?
-        };
-    };
-};
 
 / {
     mo_cyan: mo_cyan {
@@ -176,6 +133,49 @@
     };
 };
 
+
+/ {
+    behaviors {
+        mo_tog: behavior_mo_tog {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&to>; //TODO make each a macro with rgb?
+        };
+        
+        rot_mouse_scroll: sensor_rotate_kp {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+        };
+                
+        mo_to_cyan: behavior_mo_to_cyan {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_cyan>, <&to_cyan>; //TODO make each a macro with rgb?
+        };
+                
+        mo_to_lime: behavior_mo_to_lime {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_lime>, <&to_lime>; //TODO make each a macro with rgb?
+        };
+                
+        mo_to_orange: behavior_mo_to_orange {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_orange>, <&to_orange>; //TODO make each a macro with rgb?
+        };
+    };
+};
+
 / {
     keymap {
         compatible = "zmk,keymap";
@@ -201,7 +201,7 @@
                 &kp F15    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                   ┃   SPACE   ┃  NUMPAD   ┃    ALT    ┃   CTRL    ┃   MOUSE   ┃   ┃    WIN    ┃ BACKSPACE ┃    ALT    ┃   NAVIG   ┃   SPACE   ┃
-                                       &kp SPACE  LAY(NUMPAD)  &kp LALT    &kp LCTRL   TO_MOUSE        &kp LMETA   &kp BSPC     &kp RET    TO_NAVIG    &kp SPACE   
+                                       &kp SPACE   TO_NUMPAD  &kp LALT    &kp LCTRL   TO_MOUSE        &kp LMETA   &kp BSPC     &kp RET    TO_NAVIG    &kp SPACE   
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
