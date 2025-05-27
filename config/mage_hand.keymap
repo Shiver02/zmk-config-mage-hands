@@ -201,7 +201,7 @@
                 &kp F15    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                   ┃   SPACE   ┃  NUMPAD   ┃    ALT    ┃   CTRL    ┃   MOUSE   ┃   ┃    WIN    ┃ BACKSPACE ┃    ALT    ┃   NAVIG   ┃   SPACE   ┃
-                                       &kp SPACE  $mo_to_orange 2 2  &kp LALT    &kp LCTRL   TO_MOUSE        &kp LMETA   &kp BSPC     &kp RET    TO_NAVIG    &kp SPACE   
+                                       &kp SPACE  LAY(NUMPAD)  &kp LALT    &kp LCTRL   TO_MOUSE        &kp LMETA   &kp BSPC     &kp RET    TO_NAVIG    &kp SPACE   
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
