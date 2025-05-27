@@ -100,7 +100,7 @@
                  , <&macro_release &mo 1>
                  , <&macro_tap &rgb_ug RGB_COLOR_HSB(220,46,120)>;
     };
-}
+};
 
 / {
     to_cyan: to_cyan {
@@ -112,7 +112,7 @@
                  , <&macro_pause_for_release>
                  , <&macro_release &to 1>
     };
-}
+};
 
 / {
     mo_lime: mo_lime {
@@ -125,7 +125,7 @@
                  , <&macro_release &mo 1>
                  , <&macro_tap &rgb_ug RGB_COLOR_HSB(220,46,120)>;
     };
-}
+};
 
 / {
     to_lime: to_lime {
@@ -137,7 +137,7 @@
                  , <&macro_pause_for_release>
                  , <&macro_release &to 1>
     };
-}
+};
 
 / {
     mo_orange: mo_orange {
@@ -150,7 +150,7 @@
                  , <&macro_release &mo 1>
                  , <&macro_tap &rgb_ug RGB_COLOR_HSB(220,46,120)>;
     };
-}
+};
 
 / {
     to_orange: to_orange {
@@ -162,7 +162,7 @@
                  , <&macro_pause_for_release>
                  , <&macro_release &to 1>
     };
-}
+};
 
 / {
     to_pink: to_pink {
@@ -174,7 +174,7 @@
                  , <&macro_pause_for_release>
                  , <&macro_release &mo 1>
     };
-}
+};
 
 / {
     keymap {
