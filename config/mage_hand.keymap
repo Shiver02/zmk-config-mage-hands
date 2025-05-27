@@ -35,7 +35,18 @@
 
 #define BT_PROF &bt BT_SEL
 
-#define LAY(layer) &mo_tog layer layer   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
+#define LAY(layer)      &mo_to        layer layer   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
+#define LAY_CYAN(layer) $mo_to_cyan   layer layer
+#define LAY_LIME(layer) $mo_to_lime   layer layer
+#define LAY_ORNG(layer) $mo_to_orange layer layer
+#define LAY_PINK(layer) $to_pink layer
+
+#define TO_HOME   LAY_PINK(DEFAULT)
+#define TO_NAVIG  LAY_LIME(NAVIG)
+#define TO_NUMPAD LAY_ORNG(NUMPAD)
+#define TO_MOUSE  LAY_CYAN(MOUSE)
+
+
 / {
     behaviors {
         mo_tog: behavior_mo_tog {
@@ -43,7 +54,7 @@
             #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            bindings = <&mo>, <&tog>;
+            bindings = <&mo>, <&to>; //TODO make each a macro with rgb?
         };
         
         rot_mouse_scroll: sensor_rotate_kp {
@@ -51,11 +62,121 @@
             #sensor-binding-cells = <2>;
             bindings = <&msc>, <&msc>;
         };
+                
+        mo_to_cyan: behavior_mo_to_cyan {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_cyan>, <&to_cyan>; //TODO make each a macro with rgb?
+        };
+                
+        mo_to_lime: behavior_mo_to_lime {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_lime>, <&to_lime>; //TODO make each a macro with rgb?
+        };
+                
+        mo_to_orange: behavior_mo_to_orange {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_orange>, <&to_orange>; //TODO make each a macro with rgb?
+        };
     };
 };
 
 / {
+    mo_cyan: mo_cyan {
+        // ...
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings = <&macro_press &mo 1>
+                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(44, 215, 255)>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &mo 1>
+                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(220,46,120)>;
+    };
+}
 
+/ {
+    to_cyan: to_cyan {
+        // ...
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings = <&macro_press &to 1>
+                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(44, 215, 255)>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &to 1>
+    };
+}
+
+/ {
+    mo_lime: mo_lime {
+        // ...
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings = <&macro_press &mo 1>
+                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(151, 255, 44)>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &mo 1>
+                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(220,46,120)>;
+    };
+}
+
+/ {
+    to_lime: to_lime {
+        // ...
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings = <&macro_press &to 1>
+                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(151, 255, 44)>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &to 1>
+    };
+}
+
+/ {
+    mo_orange: mo_orange {
+        // ...
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings = <&macro_press &mo 1>
+                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(255, 185, 44)>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &mo 1>
+                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(220,46,120)>;
+    };
+}
+
+/ {
+    to_orange: to_orange {
+        // ...
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings = <&macro_press &to 1>
+                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(255, 185, 44)>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &to 1>
+    };
+}
+
+/ {
+    to_pink: to_pink {
+        // ...
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings = <&macro_press &mo 1>
+                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(220,46,120)>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &mo 1>
+    };
+}
+
+/ {
     keymap {
         compatible = "zmk,keymap";
 
@@ -80,7 +201,7 @@
                 &kp F15    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                   ┃   SPACE   ┃  NUMPAD   ┃    ALT    ┃   CTRL    ┃   MOUSE   ┃   ┃    WIN    ┃ BACKSPACE ┃    ALT    ┃   NAVIG   ┃   SPACE   ┃
-                                       &kp SPACE  LAY(NUMPAD)  &kp LALT    &kp LCTRL  LAY(MOUSE)       &kp LMETA   &kp BSPC     &kp RET    LAY(NAVIG)   &kp SPACE   
+                                       &kp SPACE   TO_NUMPAD   &kp LALT    &kp LCTRL   TO_MOUSE        &kp LMETA   &kp BSPC     &kp RET    TO_NAVIG    &kp SPACE   
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -90,23 +211,23 @@
             sensor-bindings =                                                                                                                                           <&inc_dec_kp UP DOWN>;
             bindings = <
 //           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
-//           ┃           ┃   BT 1    ┃    BT 2   ┃    BT 3   ┃           ┃           ┃ BT CLEAR  ┃   ┃           ┃PRINT SCRN ┃SCROLL LCK ┃ PAUSE BRK ┃           ┃           ┃  UP/DOWN  ┃
-                 &trans    BT_PROF 1   BT_PROF 2   BT_PROF 3     &trans      &trans   &bt BT_CLR         &trans    &kp PSCRN    &kp SLCK    _PAUSE_      &trans      &trans    //ENCODER
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃PRINT SCRN ┃SCROLL LCK ┃ PAUSE BRK ┃           ┃           ┃  UP/DOWN  ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp PSCRN    &kp SLCK    _PAUSE_      &trans      &trans    //ENCODER
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃  INSERT   ┃    HOME   ┃   PG UP   ┃           ┃           ┃           ┃
-                 RGBTOG      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp INS    &kp HOME    &kp PG_UP     &trans      &trans      &trans  
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃  INSERT   ┃    HOME   ┃   PG UP   ┃           ┃           ┃    BT 1   ┃
+                 RGBTOG      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp INS    &kp HOME    &kp PG_UP     &trans      &trans    BT_PROF 1 
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃  DELETE   ┃    END    ┃  PG DOWN  ┃           ┃           ┃           ┃
-                 RGBBRI      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp DEL     &kp END    &kp PG_DN     &trans      &trans      &trans  
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃  DELETE   ┃    END    ┃  PG DOWN  ┃           ┃           ┃    BT 2   ┃
+                 RGBBRI      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp DEL     &kp END    &kp PG_DN     &trans      &trans    BT_PROF 2 
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     [     ┃  UP  ARW  ┃     ]     ┃           ┃           ┃           ┃
-                 RGBBRD      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp LBKT      &kp UP    &kp RBKT      &trans      &trans      &trans  
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     [     ┃  UP  ARW  ┃     ]     ┃           ┃           ┃    BT 3   ┃
+                 RGBBRD      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp LBKT      &kp UP    &kp RBKT      &trans      &trans    BT_PROF 3 
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ LEFT  ARW ┃ DOWN  ARW ┃ RIGHT ARW ┃           ┃           ┃           ┃
-                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp LEFT   &kp DOWN    &kp RIGHT     &trans      &trans      &trans  
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ LEFT  ARW ┃ DOWN  ARW ┃ RIGHT ARW ┃           ┃           ┃ BT CLEAR  ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp LEFT   &kp DOWN    &kp RIGHT     &trans      &trans   &bt BT_CLR
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃
-                                         &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans
+//                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃   HOME    ┃           ┃
+                                         &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans     TO_HOME      &trans
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -116,23 +237,23 @@
             sensor-bindings =                                                                                                                               <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
 //           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
-//           ┃           ┃   BT 1    ┃    BT 2   ┃    BT 3   ┃           ┃           ┃ BT CLEAR  ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃   VOLUME  ┃
-                 &trans    BT_PROF 1   BT_PROF 2   BT_PROF 3     &trans      &trans   &bt BT_CLR         &trans      &trans      &trans      &trans      &trans      &trans    //ENCODER
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃   VOLUME  ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans    //ENCODER
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ NUM LOCK  ┃     /     ┃     *     ┃ BACKSPACE ┃           ┃           ┃
-                 RGBTOG      &trans      &trans      &trans      &trans      &trans      &trans          &trans   &kp KP_NUM     _DIV_       _MULT_    &kp BSPC      &trans      &trans  
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ NUM LOCK  ┃     /     ┃     *     ┃ BACKSPACE ┃           ┃    BT 1   ┃
+                 RGBTOG      &trans      &trans      &trans      &trans      &trans      &trans          &trans   &kp KP_NUM     _DIV_       _MULT_    &kp BSPC      &trans    BT_PROF 1 
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     7     ┃     8     ┃     9     ┃     -     ┃           ┃           ┃
-                 RGBBRI      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp KP_N7   &kp KP_N8   &kp KP_N9  &kp KP_MINUS   &trans      &trans  
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     7     ┃     8     ┃     9     ┃     -     ┃           ┃    BT 2   ┃
+                 RGBBRI      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp KP_N7   &kp KP_N8   &kp KP_N9  &kp KP_MINUS   &trans    BT_PROF 2 
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     4     ┃     5     ┃     6     ┃     +     ┃           ┃           ┃
-                 RGBBRD      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp KP_N4   &kp KP_N5   &kp KP_N6  &kp KP_PLUS      &trans      &trans  
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     4     ┃     5     ┃     6     ┃     +     ┃           ┃    BT 3   ┃
+                 RGBBRD      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp KP_N4   &kp KP_N5   &kp KP_N6  &kp KP_PLUS    &trans    BT_PROF 3  
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     1     ┃     2     ┃     3     ┃     .     ┃           ┃           ┃
-                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_DOT      &trans      &trans  
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     1     ┃     2     ┃     3     ┃     .     ┃           ┃ BT CLEAR  ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_DOT    &trans   &bt BT_CLR 
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃     0     ┃           ┃           ┃           ┃           ┃
-                                         &trans      &trans      &trans      &trans      &trans        &kp KP_N0     &trans      &trans      &trans      &trans
+//                                   ┃           ┃   HOME    ┃           ┃           ┃           ┃   ┃     0     ┃           ┃           ┃           ┃           ┃
+                                         &trans     TO_HOME      &trans      &trans      &trans        &kp KP_N0     &trans      &trans      &trans      &trans
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -142,8 +263,8 @@
             sensor-bindings =                                                                                                                                    <&rot_mouse_scroll SCRL_UP SCRL_DOWN>;
             bindings = <
 //           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
-//           ┃           ┃   BT 1    ┃    BT 2   ┃    BT 3   ┃           ┃           ┃ BT CLEAR  ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃    MOUSE  ┃
-                 &trans    BT_PROF 1   BT_PROF 2   BT_PROF 3     &trans      &trans   &bt BT_CLR         &trans      &trans      &trans      &trans      &trans      &trans     //SCROLL
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃    MOUSE  ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans     //SCROLL
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans      &trans  
@@ -157,8 +278,8 @@
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans      &trans  
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃  FORWARD  ┃           ┃           ┃    BACK   ┃
-                                         &trans      &trans      &trans      &trans      &trans          &trans    &mkp MB5     &trans      &trans      &mkp MB4
+//                                   ┃           ┃           ┃           ┃           ┃   HOME    ┃   ┃           ┃  FORWARD  ┃           ┃           ┃    BACK   ┃
+                                         &trans      &trans      &trans      &trans     TO_HOME          &trans    &mkp MB5     &trans      &trans      &mkp MB4
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
