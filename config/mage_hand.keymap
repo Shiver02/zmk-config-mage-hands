@@ -78,7 +78,7 @@
                  , <&macro_tap SET_MOUS_RGB>
                  , <&macro_pause_for_release>
                  , <&macro_release &mo MOUSE_LAYER>
-                 , <&macro_tap SET_NAV_RGB>
+                 , <&macro_tap SET_NAV_RGB>;
     };
 
     mo_mouse_from_num: mo_mouse_from_num {
@@ -88,7 +88,7 @@
                  , <&macro_tap SET_MOUS_RGB>
                  , <&macro_pause_for_release>
                  , <&macro_release &mo MOUSE_LAYER>
-                 , <&macro_tap SET_NUM_RGB>
+                 , <&macro_tap SET_NUM_RGB>;
     };
 
     
@@ -357,23 +357,6 @@
         };
     };
 };
-
-
-#define NA_2_HOM &mo_to_home_from_nav
-#define NU_2_HOM &mo_to_home_from_num
-#define MO_2_HOM &mo_to_home_from_mouse
-
-#define HO_2_MOU &mo_to_mouse
-#define NA_2_MOU &mo_to_mouse_from_nav
-#define NU_2_MOU &mo_to_mouse_from_num
-
-#define HO_2_NAV &mo_to_nav
-#define NU_2_NAV &mo_to_nav_from_num
-#define MO_2_NAV &mo_to_nav_from_mouse
-
-#define HO_2_NUM &mo_to_num
-#define NA_2_NUM &mo_to_num_from_nav
-#define MO_2_NUM &mo_to_num_from_mouse
 
 
 / {
