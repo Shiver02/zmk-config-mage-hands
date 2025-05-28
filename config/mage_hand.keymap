@@ -11,10 +11,10 @@
 #include <dt-bindings/zmk/pointing.h>
 
 //Layer Names
-#define DEFAULT 0
-#define NAVIG   1
-#define NUMPAD  2
-#define MOUSE   3
+#define HOME_LAYER   0
+#define NAVIG_LAYER  1
+#define NUMPAD_LAYER 2
+#define MOUSE_LAYER  3
 
 // Short versions
 #define RGBON   &rgb_ug RGB_ON
@@ -35,146 +35,346 @@
 
 #define BT_PROF &bt BT_SEL
 
-#define LAY(layer)      &mo_to        layer layer   // Macro to apply momentary-layer-on-hold/toggle-layer-on-tap to a specific layer
-#define LAY_CYAN(layer) &mo_to_cyan   layer layer
-#define LAY_LIME(layer) &mo_to_lime   layer layer
-#define LAY_ORNG(layer) &mo_to_orange layer layer
-#define LAY_PINK(layer) &to_pink layer
+#define SET_HOME_RGB &rgb_ug RGB_COLOR_HSB(220,  46, 120)
+#define SET_NAV_RGB  &rgb_ug RGB_COLOR_HSB(151, 255,  44)
+#define SET_NUM_RGB  &rgb_ug RGB_COLOR_HSB(255, 185,  44)
+#define SET_MOUS_RGB &rgb_ug RGB_COLOR_HSB( 44, 215, 255)
 
-#define TO_HOME   LAY_PINK(DEFAULT)
-#define TO_NAVIG  LAY_LIME(NAVIG)
-#define TO_NUMPAD LAY_ORNG(NUMPAD)
-#define TO_MOUSE  LAY_CYAN(MOUSE)
+
+#define TO_HOME  &to_home
+
+#define NA_2_HOM &mo_to_home_from_nav
+#define NU_2_HOM &mo_to_home_from_num
+#define MO_2_HOM &mo_to_home_from_mouse
+
+#define HO_2_MOU &mo_to_mouse
+#define NA_2_MOU &mo_to_mouse_from_nav
+#define NU_2_MOU &mo_to_mouse_from_num
+
+#define HO_2_NAV &mo_to_nav
+#define NU_2_NAV &mo_to_nav_from_num
+#define MO_2_NAV &mo_to_nav_from_mouse
+
+#define HO_2_NUM &mo_to_num
+#define NA_2_NUM &mo_to_num_from_nav
+#define MO_2_NUM &mo_to_num_from_mouse
+
 
 / {
-    mo_cyan: mo_cyan {
-        // ...
-        compatible = "zmk,behavior-macro-one-param";
-        #binding-cells = <1>;
-        bindings = <&macro_press &mo 1>
-                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(44, 215, 255)>
+    mo_mouse: mo_mouse {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo MOUSE_LAYER>
+                 , <&macro_tap SET_MOUS_RGB>
                  , <&macro_pause_for_release>
-                 , <&macro_release &mo 1>
-                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(220,46,120)>;
+                 , <&macro_release &mo MOUSE_LAYER>
+                 , <&macro_tap SET_HOME_RGB>;
     };
-};
 
-/ {
-    to_cyan: to_cyan {
-        // ...
-        compatible = "zmk,behavior-macro-one-param";
-        #binding-cells = <1>;
-        bindings = <&macro_press &to 1>
-                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(44, 215, 255)>
+    mo_mouse_from_nav: mo_mouse_from_nav {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo MOUSE_LAYER>
+                 , <&macro_tap SET_MOUS_RGB>
                  , <&macro_pause_for_release>
-                 , <&macro_release &to 1>;
+                 , <&macro_release &mo MOUSE_LAYER>
+                 , <&macro_tap SET_NAV_RGB>
     };
-};
 
-/ {
-    mo_lime: mo_lime {
-        // ...
-        compatible = "zmk,behavior-macro-one-param";
-        #binding-cells = <1>;
-        bindings = <&macro_press &mo 1>
-                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(151, 255, 44)>
+    mo_mouse_from_num: mo_mouse_from_num {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo MOUSE_LAYER>
+                 , <&macro_tap SET_MOUS_RGB>
                  , <&macro_pause_for_release>
-                 , <&macro_release &mo 1>
-                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(220,46,120)>;
+                 , <&macro_release &mo MOUSE_LAYER>
+                 , <&macro_tap SET_NUM_RGB>
     };
-};
 
-/ {
-    to_lime: to_lime {
-        // ...
-        compatible = "zmk,behavior-macro-one-param";
-        #binding-cells = <1>;
-        bindings = <&macro_press &to 1>
-                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(151, 255, 44)>
+    
+    mo_nav: mo_nav {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo NAVIG_LAYER>
+                 , <&macro_tap SET_NAV_RGB>
                  , <&macro_pause_for_release>
-                 , <&macro_release &to 1>;
+                 , <&macro_release &mo NAVIG_LAYER>
+                 , <&macro_tap SET_HOME_RGB>;
     };
-};
-
-/ {
-    mo_orange: mo_orange {
-        // ...
-        compatible = "zmk,behavior-macro-one-param";
-        #binding-cells = <1>;
-        bindings = <&macro_press &mo 1>
-                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(255, 185, 44)>
+    
+    mo_nav_from_num: mo_nav_from_num {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo NAVIG_LAYER>
+                 , <&macro_tap SET_NAV_RGB>
                  , <&macro_pause_for_release>
-                 , <&macro_release &mo 1>
-                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(220,46,120)>;
+                 , <&macro_release &mo NAVIG_LAYER>
+                 , <&macro_tap SET_NUM_RGB>;
     };
-};
-
-/ {
-    to_orange: to_orange {
-        // ...
-        compatible = "zmk,behavior-macro-one-param";
-        #binding-cells = <1>;
-        bindings = <&macro_press &to 1>
-                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(255, 185, 44)>
+    
+    mo_nav_from_mouse: mo_nav_from_mouse {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo NAVIG_LAYER>
+                 , <&macro_tap SET_NAV_RGB>
                  , <&macro_pause_for_release>
-                 , <&macro_release &to 1>;
+                 , <&macro_release &mo NAVIG_LAYER>
+                 , <&macro_tap SET_MOUS_RGB>;
     };
-};
+    
 
-/ {
-    to_pink: to_pink {
-        // ...
-        compatible = "zmk,behavior-macro-one-param";
-        #binding-cells = <1>;
-        bindings = <&macro_press &mo 1>
-                 , <&macro_tap &rgb_ug RGB_COLOR_HSB(220,46,120)>
+    mo_num: mo_num {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo NUMPAD_LAYER>
+                 , <&macro_tap SET_NUM_RGB>
                  , <&macro_pause_for_release>
-                 , <&macro_release &mo 1>;
+                 , <&macro_release &mo NUMPAD_LAYER>
+                 , <&macro_tap SET_HOME_RGB>;
+    };
+
+    mo_num_from_nav: mo_num_from_nav {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo NUMPAD_LAYER>
+                 , <&macro_tap SET_NUM_RGB>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &mo NUMPAD_LAYER>
+                 , <&macro_tap SET_NAV_RGB>;
+    };
+
+    mo_num_from_mouse: mo_num_from_mouse {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo NUMPAD_LAYER>
+                 , <&macro_tap SET_NUM_RGB>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &mo NUMPAD_LAYER>
+                 , <&macro_tap SET_MOUS_RGB>;
+    };
+    
+    
+    mo_hom_from_nav: mo_hom_from_nav {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo HOME_LAYER>
+                 , <&macro_tap SET_HOME_RGB>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &mo HOME_LAYER>
+                 , <&macro_tap SET_NAV_RGB>;
+    };
+    
+    mo_hom_from_num: mo_hom_from_num {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo HOME_LAYER>
+                 , <&macro_tap SET_HOME_RGB>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &mo HOME_LAYER>
+                 , <&macro_tap SET_NUM_RGB>;
+    };
+    
+    mo_hom_from_mouse: mo_hom_from_mouse {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo HOME_LAYER>
+                 , <&macro_tap SET_HOME_RGB>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &mo HOME_LAYER>
+                 , <&macro_tap SET_MOUS_RGB>;
+    };
+
+    
+    to_mouse: to_mouse {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &to MOUSE_LAYER>
+                 , <&macro_tap SET_MOUS_RGB>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &to MOUSE_LAYER>;
+    };
+
+    to_nav: to_nav {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &to NAVIG_LAYER>
+                 , <&macro_tap SET_NAV_RGB>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &to NAVIG_LAYER>;
+    };
+    
+    to_num: to_num {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &to NUMPAD_LAYER>
+                 , <&macro_tap SET_NUM_RGB>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &to NUMPAD_LAYER>;
+    };
+    
+    to_home: to_home {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&macro_press &mo HOME_LAYER>
+                 , <&macro_tap SET_HOME_RGB>
+                 , <&macro_pause_for_release>
+                 , <&macro_release &mo HOME_LAYER>;
     };
 };
 
 
 / {
     behaviors {
-        mo_tog: behavior_mo_tog {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&to>; //TODO make each a macro with rgb?
-        };
-        
         rot_mouse_scroll: sensor_rotate_kp {
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
             bindings = <&msc>, <&msc>;
         };
-                
-        mo_to_cyan: behavior_mo_to_cyan {
+
+        mo_tog: behavior_mo_to {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            bindings = <&mo_cyan>, <&to_cyan>; //TODO make each a macro with rgb?
+            bindings = <&mo>, <&to>;
+        };
+
+                
+        mo_to_home_from_nav: mo_to_home_from_nav {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_hom_from_nav>, <&to_home>;
+        };
+                        
+        mo_to_home_from_num: mo_to_home_from_num {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_hom_from_num>, <&to_home>;
+        };
+                        
+        mo_to_home_from_mouse: mo_to_home_from_mouse {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_hom_from_mouse>, <&to_home>;
+        };
+
+                
+        mo_to_nav: mo_to_nav {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_nav>, <&to_nav>;
         };
                 
-        mo_to_lime: behavior_mo_to_lime {
+        mo_to_nav_from_num: mo_to_nav_from_num {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            bindings = <&mo_lime>, <&to_lime>; //TODO make each a macro with rgb?
+            bindings = <&mo_nav_from_num>, <&to_nav>;
         };
                 
-        mo_to_orange: behavior_mo_to_orange {
+        mo_to_nav_from_mouse: mo_to_nav_from_mouse {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            bindings = <&mo_orange>, <&to_orange>; //TODO make each a macro with rgb?
+            bindings = <&mo_nav_from_mouse>, <&to_nav>;
+        };
+
+
+        mo_to_num: mo_to_num {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_num>, <&to_num>;
+        };
+                
+        mo_to_num_from_nav: mo_to_num_from_nav {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_num_from_nav>, <&to_num>;
+        };
+                
+        mo_to_num_from_mouse: mo_to_num_from_mouse {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_num_from_nav>, <&to_num>;
+        };
+
+                
+        mo_to_mouse: mo_to_mouse {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_mouse>, <&to_mouse>;
+        };
+                
+        mo_to_mouse_from_nav: mo_to_mouse_from_nav {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_mouse_from_nav>, <&to_mouse>;
+        };
+                
+        mo_to_mouse_from_num: mo_to_mouse_from_num {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_mouse_from_num>, <&to_mouse>;
         };
     };
 };
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+        combo_return_home {
+            timeout-ms = <50>;
+            key-positions = <69 78>;
+            bindings = <TO_HOME>;
+        };
+
+        combo_caps_word {
+            timeout-ms = <50>;
+            key-positions = <58 69>;
+            bindings = <&caps_word>;
+        };
+    };
+};
+
+
+#define NA_2_HOM &mo_to_home_from_nav
+#define NU_2_HOM &mo_to_home_from_num
+#define MO_2_HOM &mo_to_home_from_mouse
+
+#define HO_2_MOU &mo_to_mouse
+#define NA_2_MOU &mo_to_mouse_from_nav
+#define NU_2_MOU &mo_to_mouse_from_num
+
+#define HO_2_NAV &mo_to_nav
+#define NU_2_NAV &mo_to_nav_from_num
+#define MO_2_NAV &mo_to_nav_from_mouse
+
+#define HO_2_NUM &mo_to_num
+#define NA_2_NUM &mo_to_num_from_nav
+#define MO_2_NUM &mo_to_num_from_mouse
+
 
 / {
     keymap {
@@ -200,8 +400,8 @@
 //           ┃     G3    ┃   SHIFT   ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     N     ┃     M     ┃     ,     ┃     .     ┃     /     ┃   SHIFT   ┃   MUTE    ┃
                 &kp F15    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃   SPACE   ┃  NUMPAD   ┃    ALT    ┃   CTRL    ┃   MOUSE   ┃   ┃    WIN    ┃ BACKSPACE ┃    ALT    ┃   NAVIG   ┃   SPACE   ┃
-                                       &kp SPACE   TO_NUMPAD   &kp LALT    &kp LCTRL   TO_MOUSE        &kp LMETA   &kp BSPC     &kp RET    TO_NAVIG    &kp SPACE   
+//                                   ┃   SPACE   ┃  NUMPAD   ┃    ALT    ┃   CTRL    ┃   MOUSE   ┃   ┃    WIN    ┃ BACKSPACE ┃   ENTER   ┃   NAVIG   ┃   SPACE   ┃
+                                       &kp SPACE   HO_2_NUM    &kp LALT    &kp LCTRL   HO_2_MOU        &kp LMETA   &kp BSPC     &kp RET    HO_2_NAV    &kp SPACE   
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -226,8 +426,8 @@
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ LEFT  ARW ┃ DOWN  ARW ┃ RIGHT ARW ┃           ┃           ┃ BT CLEAR  ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp LEFT   &kp DOWN    &kp RIGHT     &trans      &trans   &bt BT_CLR
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃   HOME    ┃           ┃
-                                         &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans     TO_HOME      &trans
+//                                   ┃           ┃  NUMPAD   ┃           ┃           ┃   MOUSE   ┃   ┃           ┃           ┃           ┃   HOME    ┃           ┃
+                                         &trans    NA_2_NUM      &trans      &trans    NA_2_MOU          &trans      &trans      &trans    NA_2_HOM      &trans
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -252,8 +452,8 @@
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     1     ┃     2     ┃     3     ┃     .     ┃           ┃ BT CLEAR  ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_DOT    &trans   &bt BT_CLR 
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃   HOME    ┃           ┃           ┃           ┃   ┃     0     ┃           ┃           ┃           ┃           ┃
-                                         &trans     TO_HOME      &trans      &trans      &trans        &kp KP_N0     &trans      &trans      &trans      &trans
+//                                   ┃           ┃   HOME    ┃           ┃           ┃   MOUSE   ┃   ┃     0     ┃           ┃           ┃   NAVIG   ┃           ┃
+                                         &trans    NU_2_HOM      &trans      &trans    NU_2_MOU        &kp KP_N0     &trans      &trans    NU_2_NAV      &trans
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -278,8 +478,8 @@
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans      &trans  
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃           ┃           ┃           ┃   HOME    ┃   ┃           ┃  FORWARD  ┃           ┃           ┃    BACK   ┃
-                                         &trans      &trans      &trans      &trans     TO_HOME          &trans    &mkp MB5     &trans      &trans      &mkp MB4
+//                                   ┃           ┃  NUMPAD   ┃           ┃           ┃   HOME    ┃   ┃           ┃  FORWARD  ┃           ┃   NAVIG   ┃    BACK   ┃
+                                         &trans    MO_2_NUM    &trans      &trans      MO_2_HOM          &trans    &mkp MB5     &trans     MO_2_NAV    &mkp MB4
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
