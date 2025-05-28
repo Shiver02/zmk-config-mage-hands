@@ -43,21 +43,21 @@
 
 #define TO_HOME  &to_home
 
-#define NA_2_HOM &mo_to_home_from_nav
-#define NU_2_HOM &mo_to_home_from_num
-#define MO_2_HOM &mo_to_home_from_mouse
+#define NA_2_HOM &mo_to_home_from_nav   0 0
+#define NU_2_HOM &mo_to_home_from_num   0 0
+#define MO_2_HOM &mo_to_home_from_mouse 0 0
 
-#define HO_2_MOU &mo_to_mouse
-#define NA_2_MOU &mo_to_mouse_from_nav
-#define NU_2_MOU &mo_to_mouse_from_num
+#define HO_2_MOU &mo_to_mouse          0 0
+#define NA_2_MOU &mo_to_mouse_from_nav 0 0
+#define NU_2_MOU &mo_to_mouse_from_num 0 0
 
-#define HO_2_NAV &mo_to_nav
-#define NU_2_NAV &mo_to_nav_from_num
-#define MO_2_NAV &mo_to_nav_from_mouse
+#define HO_2_NAV &mo_to_nav            0 0
+#define NU_2_NAV &mo_to_nav_from_num   0 0
+#define MO_2_NAV &mo_to_nav_from_mouse 0 0
 
-#define HO_2_NUM &mo_to_num
-#define NA_2_NUM &mo_to_num_from_nav
-#define MO_2_NUM &mo_to_num_from_mouse
+#define HO_2_NUM &mo_to_num            0 0
+#define NA_2_NUM &mo_to_num_from_nav   0 0
+#define MO_2_NUM &mo_to_num_from_mouse 0 0
 
 
 / {
@@ -242,7 +242,7 @@
                 
         mo_to_home_from_nav: mo_to_home_from_nav {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo_hom_from_nav>, <&to_home>;
@@ -250,7 +250,7 @@
                         
         mo_to_home_from_num: mo_to_home_from_num {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo_hom_from_num>, <&to_home>;
@@ -258,7 +258,7 @@
                         
         mo_to_home_from_mouse: mo_to_home_from_mouse {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo_hom_from_mouse>, <&to_home>;
@@ -267,7 +267,7 @@
                 
         mo_to_nav: mo_to_nav {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo_nav>, <&to_nav>;
@@ -275,7 +275,7 @@
                 
         mo_to_nav_from_num: mo_to_nav_from_num {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo_nav_from_num>, <&to_nav>;
@@ -283,7 +283,7 @@
                 
         mo_to_nav_from_mouse: mo_to_nav_from_mouse {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo_nav_from_mouse>, <&to_nav>;
@@ -292,7 +292,7 @@
 
         mo_to_num: mo_to_num {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo_num>, <&to_num>;
@@ -300,7 +300,7 @@
                 
         mo_to_num_from_nav: mo_to_num_from_nav {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo_num_from_nav>, <&to_num>;
@@ -308,7 +308,7 @@
                 
         mo_to_num_from_mouse: mo_to_num_from_mouse {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo_num_from_nav>, <&to_num>;
@@ -317,7 +317,7 @@
                 
         mo_to_mouse: mo_to_mouse {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo_mouse>, <&to_mouse>;
@@ -325,7 +325,7 @@
                 
         mo_to_mouse_from_nav: mo_to_mouse_from_nav {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo_mouse_from_nav>, <&to_mouse>;
@@ -333,7 +333,7 @@
                 
         mo_to_mouse_from_num: mo_to_mouse_from_num {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo_mouse_from_num>, <&to_mouse>;
