@@ -40,7 +40,6 @@
 #define SET_NUM_RGB  &rgb_ug RGB_COLOR_HSB(255, 185,  44)
 #define SET_MOUS_RGB &rgb_ug RGB_COLOR_HSB( 44, 215, 255)
 
-
 #define TO_HOME  &to_home
 
 #define NA_2_HOM &mo_to_home_from_nav   0 0
@@ -59,8 +58,20 @@
 #define NA_2_NUM &mo_to_num_from_nav   0 0
 #define MO_2_NUM &mo_to_num_from_mouse 0 0
 
+#define B_LIT_TOG &ctrl_alt_btn O
+#define B_LIT_UP  &ctrl_alt_btn U
+#define B_LIT_DN  &ctrl_alt_btn D
 
 / {
+    ctrl_alt_btn: ctrl_alt_btn {
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings = <&macro_press &kp LCTRL &kp LALT>
+                 , <&macro_param_1to1>
+                 , <&macro_tap &kp 1>
+                 , <&macro_release &kp LCTRL &kp LALT>;
+    };
+    
     mo_mouse: mo_mouse {
         compatible = "zmk,behavior-macro";
         #binding-cells = <0>;
@@ -375,13 +386,13 @@
                &kp GRAVE    &kp N1      &kp N2      &kp N3      &kp N4      &kp N5      &kp N6          &kp N7      &kp N8      &kp N9      &kp N0     &kp MINUS   &kp EQUAL    _PLAY_
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //           ┃     G1    ┃    TAB    ┃     Q     ┃     W     ┃     E     ┃     R     ┃     T     ┃   ┃     Y     ┃     U     ┃     I     ┃     O     ┃     -     ┃     =     ┃   NEXT    ┃
-                &kp F13    &kp CAPS      &kp A      &kp S        &kp D      &kp F        &kp G           &kp H       &kp J       &kp K       &kp L     &kp SEMI     &kp SQT   &kp  C_NEXT
+               B_LIT_TOG   &kp CAPS      &kp A      &kp S        &kp D      &kp F        &kp G           &kp H       &kp J       &kp K       &kp L     &kp SEMI     &kp SQT   &kp  C_NEXT
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //           ┃     G2    ┃    CAPS   ┃     A     ┃     S     ┃     D     ┃     F     ┃     G     ┃   ┃     H     ┃     J     ┃     K     ┃     L     ┃     ;     ┃     '     ┃   PREV    ┃
-                &kp F14    &kp CAPS      &kp A      &kp S        &kp D      &kp F        &kp G           &kp H       &kp J       &kp K       &kp L     &kp SEMI     &kp SQT   &kp  C_PREV
+               B_LIT_UP    &kp CAPS      &kp A      &kp S        &kp D      &kp F        &kp G           &kp H       &kp J       &kp K       &kp L     &kp SEMI     &kp SQT   &kp  C_PREV
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //           ┃     G3    ┃   SHIFT   ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     N     ┃     M     ┃     ,     ┃     .     ┃     /     ┃   SHIFT   ┃   MUTE    ┃
-                &kp F15    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
+               B_LIT_DN    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                   ┃   SPACE   ┃  NUMPAD   ┃    ALT    ┃   CTRL    ┃   MOUSE   ┃   ┃    WIN    ┃ BACKSPACE ┃   ENTER   ┃   NAVIG   ┃   SPACE   ┃
                                        &kp SPACE   HO_2_NUM    &kp LALT    &kp LCTRL   HO_2_MOU        &kp LMETA   &kp BSPC     &kp RET    HO_2_NAV    &kp SPACE   
