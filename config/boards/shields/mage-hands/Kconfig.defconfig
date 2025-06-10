@@ -15,18 +15,18 @@ config ZMK_RGB_UNDERGLOW
     default y
     imply WS2812_STRIP
 
-if SHIELD_MAGE_HAND_LEFT || SHIELD_MAGE_HAND_RIGHT
+#if SHIELD_MAGE_HAND_LEFT || SHIELD_MAGE_HAND_RIGHT
 
-    config ZMK_SPLIT
-        default y
+#    config ZMK_SPLIT
+#        default y
 
-    config SHIELD_TRACKBALL
-        bool "PMW3610 trackball"
-        imply SPI
-        imply PMW3610
-        imply ZMK_POINTING
-        imply ZMK_POINTING_SMOOTH_SCROLLING
-        depends on DT_HAS_PIXART_PMW3610_ENABLED
+#    config SHIELD_TRACKBALL
+#        bool "PMW3610 trackball"
+#        imply SPI
+#        imply PMW3610
+#        imply ZMK_POINTING
+#        imply ZMK_POINTING_SMOOTH_SCROLLING
+#        depends on DT_HAS_PIXART_PMW3610_ENABLED
         
 #    config SHIELD_UNDERGLOW
 #        bool "Per-key RGB"
@@ -36,11 +36,50 @@ if SHIELD_MAGE_HAND_LEFT || SHIELD_MAGE_HAND_RIGHT
 #        # imply ZMK_RGB_UNDERGLOW_EXT_POWER
 #        depends on DT_HAS_WORLDSEMI_WS2812_SPI_ENABLED
         
-    config SHIELD_SCREEN #TODO: more features
-        bool "Nice View"
-        imply SPI
-        imply ZMK_DISPLAY
-        #imply ZMK_DISPLAY_WORK_QUEUE_DEDICATED
-        depends on DT_HAS_SHARP_LS0XX_ENABLED
+#    config SHIELD_SCREEN #TODO: more features
+#        bool "Nice View"
+#        imply SPI
+#        imply ZMK_DISPLAY
+#        #imply ZMK_DISPLAY_WORK_QUEUE_DEDICATED
+#        depends on DT_HAS_SHARP_LS0XX_ENABLED
+
+#endif
+
+
+if SHIELD_SKREECUSTOM_LEFT || SHIELD_SKREECUSTOM_RIGHT
+
+    config ZMK_SPLIT
+        default y
+
+    config ZMK_SLEEP
+        default y
+
+    config ZMK_POINTING
+        default y
+
+    config ZMK_POINTING_SMOOTH_SCROLLING
+        default n
+
+    config SPI
+        default y
+
+    config PMW3610
+        default y
+
+    config PMW3610_SWAP_XY
+        default y
+
+    config PMW3610_REPORT_INTERVAL_MIN
+        default 8
+
+    config ZMK_RGB_UNDERGLOW_EXT_POWER
+        default n
+
+    config ZMK_KSCAN_MATRIX_WAIT_BEFORE_INPUTS
+        default 0
+
+    config ZMK_KSCAN_MATRIX_WAIT_BETWEEN_OUTPUTS
+        default 1
+
 
 endif
