@@ -7,7 +7,13 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
+config PMW3610
+    default y
 endif
+
+config ZMK_RGB_UNDERGLOW
+    default y
+    imply WS2812_STRIP
 
 if SHIELD_MAGE_HAND_LEFT || SHIELD_MAGE_HAND_RIGHT
 
@@ -22,13 +28,13 @@ if SHIELD_MAGE_HAND_LEFT || SHIELD_MAGE_HAND_RIGHT
         imply ZMK_POINTING_SMOOTH_SCROLLING
         depends on DT_HAS_PIXART_PMW3610_ENABLED
         
-    config SHIELD_UNDERGLOW
-        bool "Per-key RGB"
-        imply SPI
-        imply WS2812_STRIP
-        imply ZMK_RGB_UNDERGLOW
-        # imply ZMK_RGB_UNDERGLOW_EXT_POWER
-        depends on DT_HAS_WORLDSEMI_WS2812_SPI_ENABLED
+#    config SHIELD_UNDERGLOW
+#        bool "Per-key RGB"
+#        imply SPI
+#        imply WS2812_STRIP
+#        imply ZMK_RGB_UNDERGLOW
+#        # imply ZMK_RGB_UNDERGLOW_EXT_POWER
+#        depends on DT_HAS_WORLDSEMI_WS2812_SPI_ENABLED
         
     config SHIELD_SCREEN #TODO: more features
         bool "Nice View"
