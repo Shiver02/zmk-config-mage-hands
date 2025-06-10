@@ -62,10 +62,10 @@
 #define B_LIT_UP  &ctrl_alt_btn U
 #define B_LIT_DN  &ctrl_alt_btn D
 
-#define MT_HOME  mo_tog HOME_LAYER   HOME_LAYER
-#define MT_NAV   mo_tog NAVIG_LAYER  NAVIG_LAYER
-#define MT_NUM   mo_tog NUMPAD_LAYER NUMPAD_LAYER
-#define MT_MOUSE mo_tog MOUSE_LAYER  MOUSE_LAYER
+#define MT_HOME  &mo_tog HOME_LAYER   HOME_LAYER
+#define MT_NAV   &mo_tog NAVIG_LAYER  NAVIG_LAYER
+#define MT_NUM   &mo_tog NUMPAD_LAYER NUMPAD_LAYER
+#define MT_MOUSE &mo_tog MOUSE_LAYER  MOUSE_LAYER
 
 / {
     ctrl_alt_btn: ctrl_alt_btn {
