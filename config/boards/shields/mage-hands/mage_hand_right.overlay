@@ -40,9 +40,62 @@
 // TRACKBALL AND SCREEN //
 //======================//
 &trackball_peripheral_split {
-    device = <&right_trackball>;
+    device = <&trackball>;
 };
 
+&pinctrl {
+    spi0_default: spi0_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK,  0, 17)>,
+					<NRF_PSEL(SPIM_MOSI, 0, 11)>,
+					<NRF_PSEL(SPIM_MISO, 0, 11)>;
+        };
+    };
+
+    spi0_sleep: spi0_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK,  0, 17)>,
+					<NRF_PSEL(SPIM_MOSI, 0, 11)>,
+					<NRF_PSEL(SPIM_MISO, 0, 11)>;
+            low-power-enable;
+        };
+    };
+};
+
+&spi0 {
+    status = "okay";
+    compatible = "nordic,nrf-spim";
+    pinctrl-0 = <&spi0_default>;
+    pinctrl-1 = <&spi0_sleep>;
+    pinctrl-names = "default", "sleep";
+    cs-gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
+
+    trackball: trackball@0 {
+        status = "okay";
+        compatible = "pixart,pmw3610";
+        reg = <0>;
+        spi-max-frequency = <2000000>;
+        irq-gpios = <&gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        cpi = <600>;
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
+
+        force-awake;
+        /* keep the sensor awake while ZMK activity state is ACTIVE,
+           fallback to normal downshift mode after ZMK goes into IDLE / SLEEP mode.
+           thus, the sensor would be a `wakeup-source` */
+    };
+};
+
+/ {
+  trackball_listener {
+    compatible = "zmk,input-listener";
+    device = <&trackball>;
+  };
+};
+
+/*
 nice_view_spi: &spi1 {
 	status = "okay";
 	compatible = "nordic,nrf-spim";
@@ -62,20 +115,10 @@ nice_view_spi: &spi1 {
 		x-input-code = <INPUT_REL_X>;
 		y-input-code = <INPUT_REL_Y>;
 		
-        force-awake;
-        /* keep the sensor awake while ZMK activity state is ACTIVE,
-           fallback to normal downshift mode after ZMK goes into IDLE / SLEEP mode.
-           thus, the sensor would be a `wakeup-source` */
+        force-awake; //keep the sensor awake while ZMK activity state is ACTIVE, fallback to normal downshift mode after ZMK goes into IDLE / SLEEP mode. thus, the sensor would be a `wakeup-source`
 	};
 };
 
-/ {
-  right_listener {
-    compatible = "zmk,input-listener";
-    device = <&right_trackball>;
-  };
-};
-/*
 right_listener: &right_listener {
 	compatible = "zmk,input-listener";
 	device = <&right_trackball>;//was trackball_peripheral_split
@@ -83,14 +126,13 @@ right_listener: &right_listener {
 		//<&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 		//<&zip_x_scaler 4 1>;
 		//<&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>; // this gets it to the default installation orientation
-		//,<&zip_temp_layer 3 500>;                 // activate layer 3 within 500ms of the trackball moving
+		//,<&zip_temp_layer 3 500>;                    // activate layer 3 within 500ms of the trackball moving
 		
 		<&zip_xy_transform INPUT_TRANSFORM_X_INVERT>,
 		<&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
 		<&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,
 		<&zip_temp_layer 3 500>;
 };
-*/
 
 &pinctrl {
 	trackball_default: trackball_default {
@@ -110,7 +152,7 @@ right_listener: &right_listener {
 		};
 	};
 };
-
+*/
 
 //======//
 // LEDS //
