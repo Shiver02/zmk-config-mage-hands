@@ -159,49 +159,4 @@
             reg = <0>;
         };
     };
-
-	left_listener: left_listener {
-        compatible = "zmk,input-listener";
-        status = "disabled";
-        input-processors = 
-            <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,      // this gets it to the default installation orientation
-            <&zip_xy_scaler 1 16>,       // multiply sensitivity by 1, divide by 3 (make it slower for scrolling)
-            <&zip_xy_to_scroll_mapper>, // make this trackball output scrolling events by default instead of cursor movement
-            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>; // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.
-    };
-
-    right_listener: right_listener {
-        compatible = "zmk,input-listener";
-        status = "disabled";
-        device = <&trackball_peripheral_split>;
-        input-processors =
-			//<&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-            //<&zip_x_scaler 4 1>;
-			//<&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>; // this gets it to the default installation orientation
-            //,<&zip_temp_layer 3 500>;                 // activate layer 3 within 500ms of the trackball moving
-            
-            <&zip_xy_transform INPUT_TRANSFORM_X_INVERT>,
-            <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
-            <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,
-            <&zip_temp_layer 3 500>;
-    };
-};
-
-&pinctrl {
-	trackball_default: trackball_default {
-		group1 {
-			psels = <NRF_PSEL(SPIM_SCK,  0, 17)>,
-					<NRF_PSEL(SPIM_MOSI, 0, 11)>,
-					<NRF_PSEL(SPIM_MISO, 0, 11)>;
-		};
-	};
-
-	trackball_sleep: trackball_sleep {
-		group1 {
-			psels = <NRF_PSEL(SPIM_SCK,  0, 17)>,
-					<NRF_PSEL(SPIM_MOSI, 0, 11)>,
-					<NRF_PSEL(SPIM_MISO, 0, 11)>;
-			low-power-enable;
-		};
-	};
 };
