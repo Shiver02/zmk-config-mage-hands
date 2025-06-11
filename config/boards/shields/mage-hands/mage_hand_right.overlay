@@ -61,6 +61,46 @@ nice_view_spi: &spi1 {
 		evt-type = <INPUT_EV_REL>;
 		x-input-code = <INPUT_REL_X>;
 		y-input-code = <INPUT_REL_Y>;
+		
+        force-awake;
+        /* keep the sensor awake while ZMK activity state is ACTIVE,
+           fallback to normal downshift mode after ZMK goes into IDLE / SLEEP mode.
+           thus, the sensor would be a `wakeup-source` */
+	};
+};
+
+right_listener: right_listener {
+	compatible = "zmk,input-listener";
+	status = "disabled";
+	device = <&right_trackball>;//was trackball_peripheral_split
+	input-processors =
+		//<&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+		//<&zip_x_scaler 4 1>;
+		//<&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>; // this gets it to the default installation orientation
+		//,<&zip_temp_layer 3 500>;                 // activate layer 3 within 500ms of the trackball moving
+		
+		<&zip_xy_transform INPUT_TRANSFORM_X_INVERT>,
+		<&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
+		<&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,
+		<&zip_temp_layer 3 500>;
+};
+
+&pinctrl {
+	trackball_default: trackball_default {
+		group1 {
+			psels = <NRF_PSEL(SPIM_SCK,  0, 17)>,
+					<NRF_PSEL(SPIM_MOSI, 0, 11)>,
+					<NRF_PSEL(SPIM_MISO, 0, 11)>;
+		};
+	};
+
+	trackball_sleep: trackball_sleep {
+		group1 {
+			psels = <NRF_PSEL(SPIM_SCK,  0, 17)>,
+					<NRF_PSEL(SPIM_MOSI, 0, 11)>,
+					<NRF_PSEL(SPIM_MISO, 0, 11)>;
+			low-power-enable;
+		};
 	};
 };
 
@@ -69,14 +109,14 @@ nice_view_spi: &spi1 {
 // LEDS //
 //======//
 &pinctrl {
-	spi1_default: spi1_default {
+	spi2_default: spi2_default {
 		group1 {
 			psels = <NRF_PSEL(SPIM_SCK, 0, 25)>, // unconnected
 					<NRF_PSEL(SPIM_MOSI, 0, 8)>;
 		};
 	};
 
-    spi1_sleep: spi1_sleep {
+    spi2_sleep: spi2_sleep {
 		group1 {
 			psels = <NRF_PSEL(SPIM_SCK, 0, 25)>, // unconnected
 					<NRF_PSEL(SPIM_MOSI, 0, 8)>;
@@ -89,8 +129,8 @@ nice_view_spi: &spi1 {
     compatible = "nordic,nrf-spim";
     status     = "okay";
 
-    pinctrl-0     = <&spi1_default>;
-    pinctrl-1     = <&spi1_sleep>;
+    pinctrl-0     = <&spi2_default>;
+    pinctrl-1     = <&spi2_sleep>;
     pinctrl-names = "default", "sleep";
 
     led_strip: ws2812@0 {
@@ -101,8 +141,8 @@ nice_view_spi: &spi1 {
 		spi-max-frequency = <4000000>;
 
 		/* WS2812 */
-		chain-length = <39>; /* arbitrary; change at will */
-		spi-one-frame = <0x70>;
+		chain-length   = <39>; /* arbitrary; change at will */
+		spi-one-frame  = <0x70>;
 		spi-zero-frame = <0x40>;
 
 		color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
