@@ -69,7 +69,14 @@ nice_view_spi: &spi1 {
 	};
 };
 
-right_listener: right_listener {
+/ {
+  right_listener {
+    compatible = "zmk,input-listener";
+    device = <&right_trackball>;
+  };
+};
+/*
+right_listener: &right_listener {
 	compatible = "zmk,input-listener";
 	status = "disabled";
 	device = <&right_trackball>;//was trackball_peripheral_split
@@ -84,6 +91,7 @@ right_listener: right_listener {
 		<&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,
 		<&zip_temp_layer 3 500>;
 };
+*/
 
 &pinctrl {
 	trackball_default: trackball_default {
