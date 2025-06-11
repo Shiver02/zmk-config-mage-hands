@@ -79,6 +79,10 @@
   };
 };
 
+&trackball_peripheral_listener {
+    status = "okay";
+};
+
 /*
 nice_view_spi: &spi1 {
 	status = "okay";
