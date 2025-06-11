@@ -22,10 +22,6 @@
         ;
 };
 
-&right_listener {
-    status = "okay";
-};
-
 
 //======================//
 // TRACKBALL AND SCREEN //
@@ -59,7 +55,6 @@ nice_view_spi: &spi1 {
 /{
 	left_listener {
 		compatible = "zmk,input-listener";
-		status = "disabled";
 		device = <&left_trackball>;
 		/*
 		input-processors = 

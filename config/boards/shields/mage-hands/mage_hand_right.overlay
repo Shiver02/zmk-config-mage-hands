@@ -78,7 +78,6 @@ nice_view_spi: &spi1 {
 /*
 right_listener: &right_listener {
 	compatible = "zmk,input-listener";
-	status = "disabled";
 	device = <&right_trackball>;//was trackball_peripheral_split
 	input-processors =
 		//<&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
