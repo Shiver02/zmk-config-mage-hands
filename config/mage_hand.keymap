@@ -363,7 +363,7 @@
         combo_return_home {
             timeout-ms = <50>;
             key-positions = <69 78>;
-            bindings = <TO_HOME>;
+            bindings = <&to HOME_LAYER>;
         };
 
         combo_caps_word {
@@ -399,8 +399,8 @@
 //           ┃     G3    ┃   SHIFT   ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     N     ┃     M     ┃     ,     ┃     .     ┃     /     ┃   SHIFT   ┃   MUTE    ┃
                B_LIT_DN    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃   SPACE   ┃  NUMPAD   ┃   CTRL    ┃    ALT    ┃   MOUSE   ┃   ┃    WIN    ┃ BACKSPACE ┃   ENTER   ┃   NAVIG   ┃   SPACE   ┃
-                                       &kp SPACE    MT_NUM     &kp LCTRL   &kp LALT    MT_MOUSE       &kp LMETA    &kp BSPC     &kp RET     MT_NAV     &kp SPACE   
+//                                   ┃    ALT    ┃  NUMPAD   ┃   CTRL    ┃   SPACE   ┃   NAVIG   ┃   ┃    WIN    ┃   SPACE   ┃   ENTER   ┃   MOUSE   ┃ BACKSPACE ┃
+                                       &kp LALT     MT_NUM     &kp LCTRL   &kp SPACE     MT_NAV       &kp LMETA    &kp SPACE    &kp RET    MT_MOUSE    &kp BSPC   
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -425,8 +425,8 @@
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ LEFT  ARW ┃ DOWN  ARW ┃ RIGHT ARW ┃           ┃           ┃ BT CLEAR  ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp LEFT   &kp DOWN    &kp RIGHT     &trans      &trans   &bt BT_CLR
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃  NUMPAD   ┃           ┃           ┃   MOUSE   ┃   ┃           ┃           ┃           ┃   HOME    ┃           ┃
-                                         &trans     MT_NUM       &trans      &trans    MT_MOUSE          &trans      &trans      &trans     MT_HOME      &trans
+//                                   ┃           ┃  NUMPAD   ┃           ┃           ┃   HOME    ┃   ┃           ┃           ┃           ┃   MOUSE   ┃           ┃
+                                         &trans     MT_NUM       &trans      &trans     MT_HOME          &trans      &trans      &trans     MT_MOUSE     &trans
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -451,8 +451,8 @@
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     1     ┃     2     ┃     3     ┃     .     ┃           ┃ BT CLEAR  ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_DOT    &trans   &bt BT_CLR 
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃   HOME    ┃           ┃           ┃   MOUSE   ┃   ┃     0     ┃           ┃           ┃   NAVIG   ┃           ┃
-                                         &trans     MT_HOME      &trans      &trans    MT_MOUSE        &kp KP_N0    &trans      &trans      MT_NAV      &trans
+//                                   ┃           ┃   HOME    ┃           ┃           ┃   NAVIG   ┃   ┃     0     ┃           ┃           ┃   MOUSE   ┃           ┃
+                                         &trans     MT_HOME      &trans      &trans     MT_NAV         &kp KP_N0    &trans      &trans      MT_MOUSE    &trans
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -477,8 +477,8 @@
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans      &trans  
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃  NUMPAD   ┃           ┃           ┃   HOME    ┃   ┃           ┃  FORWARD  ┃           ┃   NAVIG   ┃    BACK   ┃
-                                         &trans     MT_NUM       &trans      &trans     MT_HOME          &trans    &mkp MB5     &trans      MT_NAV     &mkp MB4
+//                                   ┃           ┃  NUMPAD   ┃           ┃           ┃   NAVIG   ┃   ┃           ┃  FORWARD  ┃           ┃   HOME    ┃    BACK   ┃
+                                         &trans     MT_NUM       &trans      &trans     MT_NAV          &trans     &mkp MB5     &trans      MT_HOME     &mkp MB4
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
