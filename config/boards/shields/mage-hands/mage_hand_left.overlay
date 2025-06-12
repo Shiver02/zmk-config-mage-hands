@@ -95,12 +95,13 @@ nice_view_spi: &spi0 {
   trackball_listener {
     compatible = "zmk,input-listener";
     device = <&trackball>;
+	input-processors = <&zip_xy_to_scroll_mapper>;
   };
 };
 
 &trackball_peripheral_listener {
     status = "okay";
-	input-processors = <&zip_xy_to_scroll_mapper>;
+	//input-processors = <&zip_xy_to_scroll_mapper>;
 					   //<&zip_scroll_scaler 1 20>,
 					   //<&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
