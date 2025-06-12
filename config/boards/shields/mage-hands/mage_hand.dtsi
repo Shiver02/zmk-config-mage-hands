@@ -163,7 +163,7 @@
     trackball_peripheral_listener: trackball_peripheral_listener {
         compatible = "zmk,input-listener";
         status = "disabled";
-        device = <&trackball_peripheral_split>
+        device = <&trackball_peripheral_split>;
 
         //<&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,      // this gets it to the default installation orientation
         input-processors =  <&zip_xy_scaler 1 16>,       					  // multiply sensitivity by 1, divide by 3 (make it slower for scrolling)
