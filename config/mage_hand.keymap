@@ -399,8 +399,8 @@
 //           ┃     G3    ┃   SHIFT   ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     N     ┃     M     ┃     ,     ┃     .     ┃     /     ┃   SHIFT   ┃   MUTE    ┃
                B_LIT_DN    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃   SPACE   ┃  NUMPAD   ┃    ALT    ┃   CTRL    ┃   MOUSE   ┃   ┃    WIN    ┃ BACKSPACE ┃   ENTER   ┃   NAVIG   ┃   SPACE   ┃
-                                       &kp SPACE    MT_NUM     &kp LALT    &kp LCTRL    MT_MOUSE       &kp LMETA   &kp BSPC     &kp RET     MT_NAV     &kp SPACE   
+//                                   ┃   SPACE   ┃  NUMPAD   ┃   CTRL    ┃    ALT    ┃   MOUSE   ┃   ┃    WIN    ┃ BACKSPACE ┃   ENTER   ┃   NAVIG   ┃   SPACE   ┃
+                                       &kp SPACE    MT_NUM     &kp LCTRL   &kp LALT    MT_MOUSE       &kp LMETA    &kp BSPC     &kp RET     MT_NAV     &kp SPACE   
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
