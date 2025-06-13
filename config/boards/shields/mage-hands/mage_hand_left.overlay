@@ -63,7 +63,7 @@ nice_view_spi: &spi0 {
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
-		automouse-layer = <3>
+		automouse-layer = <3>;
         force-awake; //keep the sensor awake while ZMK activity state is ACTIVE, fallback to normal downshift mode after ZMK goes into IDLE / SLEEP mode. thus, the sensor would be a `wakeup-source` 
 	};
 };
