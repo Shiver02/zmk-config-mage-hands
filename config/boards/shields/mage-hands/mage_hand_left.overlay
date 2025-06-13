@@ -63,7 +63,6 @@ nice_view_spi: &spi0 {
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
-		automouse-layer = 3;
         force-awake; //keep the sensor awake while ZMK activity state is ACTIVE, fallback to normal downshift mode after ZMK goes into IDLE / SLEEP mode. thus, the sensor would be a `wakeup-source` 
 	};
 };
@@ -141,8 +140,8 @@ nice_view_spi: &spi1 {
 			<&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,      // this gets it to the default installation orientation
 			<&zip_xy_scaler 1 16>,       					  // multiply sensitivity by 1, divide by 3 (make it slower for scrolling)
 			<&zip_xy_to_scroll_mapper>, 					  // make this trackball output scrolling events by default instead of cursor movement
-			<&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>; // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.
-			
+			<&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>, // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.
+			<&zip_temp_layer 3 700>;
 	};
 };
 
