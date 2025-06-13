@@ -20,7 +20,7 @@
 #define RGBON   &rgb_ug RGB_ON
 #define RGBOFF  &rgb_ug RGB_OFF
 #define RGBTOG  &rgb_ug RGB_TOG
-#define RGBHUI  &rgb_ug RGB_HUI
+#define RGBHUI  &rgb_ug RGB_HUI  
 #define RGBHUD  &rgb_ug RGB_HUD
 #define RGBSAI  &rgb_ug RGB_SAI
 #define RGBSAD  &rgb_ug RGB_SAD
@@ -477,8 +477,8 @@
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans      &trans  
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃  NUMPAD   ┃           ┃           ┃   NAVIG   ┃   ┃           ┃  FORWARD  ┃           ┃   HOME    ┃    BACK   ┃
-                                         &trans     MT_NUM       &trans      &trans     MT_NAV          &trans     &mkp MB5     &trans      MT_HOME     &mkp MB4
+//                                   ┃           ┃  NUMPAD   ┃           ┃           ┃   NAVIG   ┃   ┃           ┃  FORWARD  ┃   BACK    ┃   HOME    ┃           ┃
+                                         &trans     MT_NUM       &trans      &trans     MT_NAV           &trans     &mkp MB5   &mkp MB4     MT_HOME      &trans 
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
