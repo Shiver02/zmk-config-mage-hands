@@ -386,6 +386,12 @@
     };
 };
 
+/ {
+    &mt {
+        flavor = "balanced";
+    } 
+}
+
 
 / {
     keymap {
