@@ -386,10 +386,8 @@
     };
 };
 
-/ {
-    &mt {
-        flavor = "balanced";
-    };
+&mt {
+    flavor = "balanced";
 };
 
 
