@@ -389,8 +389,8 @@
 / {
     &mt {
         flavor = "balanced";
-    } 
-}
+    };
+};
 
 
 / {
