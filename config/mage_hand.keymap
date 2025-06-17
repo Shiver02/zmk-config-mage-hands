@@ -406,7 +406,7 @@
                B_LIT_TOG   &kp TAB       &kp Q      &kp W        &kp E      &kp R        &kp T           &kp Y       &kp U       &kp I       &kp O       &kp P     &kp BSLH   &kp  C_NEXT
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //           ┃     G2    ┃   SPACE   ┃  META_A   ┃  CTRL_S   ┃  SHIFT_D  ┃   ALT_F   ┃     G     ┃   ┃     H     ┃   ALT_J   ┃  SHIFT_K  ┃  CTRL_L   ┃  META_SC  ┃     '     ┃   PREV    ┃
-               B_LIT_UP    &kp SPACE    META_A      CTRL_S      SHIFT_D      ALT_F       &kp G           &kp H       ALT_J      SHIFT_K     CTRL_L      META_S     &kp SQT   &kp  C_PREV
+               B_LIT_UP    &kp SPACE    META_A      CTRL_S      SHIFT_D      ALT_F       &kp G           &kp H       ALT_J      SHIFT_K     CTRL_L      META_SC     &kp SQT   &kp  C_PREV
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //           ┃     G3    ┃   SHIFT   ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     N     ┃     M     ┃     ,     ┃     .     ┃     /     ┃   SHIFT   ┃   MUTE    ┃
                B_LIT_DN    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
