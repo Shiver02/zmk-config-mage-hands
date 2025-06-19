@@ -124,8 +124,8 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
   MAKE_HRM(hm_combo_##NAME, &kp, TAP, SIDE THUMBS)                             \
   ZMK_COMBO_6(NAME, &hm_combo_##NAME HOLD 0, POS, LAYERS, COMBO_MS, IDLE_MS)
 
-ZMK_COMBO(lpar,  &lpar_lt,     RM1 RM2,     DEF     NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL),    KEYS_L)
-ZMK_COMBO(rpar,  &rpar_gt,     RM2 RM3,     DEF     NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LALT),     KEYS_L)
+ZMK_COMBO(lpar,  &lpar_lt,    49 50,     DEF     NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL),    KEYS_L)
+ZMK_COMBO(rpar,  &rpar_gt,    50 51,     DEF     NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LALT),     KEYS_L)
 
 //ZMK_COMBO(lpar,  &kp LPAR, 49 50, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL), KEYS_L)
 //ZMK_COMBO(rpar,  &kp RPAR, 50 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LALT),  KEYS_L)
@@ -139,7 +139,7 @@ ZMK_COMBO(rbrc,  &kp RBRC, 64 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 #define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
   ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
                 bindings = <BINDING1>, <BINDING2>;)
-                
+
 // Tap: left/right parenthesis | Shft + tap: less-than/greater-than.
 SIMPLE_MORPH(lpar_lt, SFT, &kp LPAR, &kp LT)
 SIMPLE_MORPH(rpar_gt, SFT, &kp RPAR, &kp GT)
