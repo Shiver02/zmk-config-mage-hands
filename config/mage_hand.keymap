@@ -97,8 +97,9 @@
                require-prior-idle-ms = <150>; hold-trigger-on-release;         \
                hold-trigger-key-positions = <TRIGGER_POS>;)
 
-MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS) // Left-hand HRMs.
-MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
+MAKE_HRM(hml, &kp, &kp,  KEYS_R THUMBS) // Left-hand HRMs.
+MAKE_HRM(hmr, &kp, &kp,  KEYS_L THUMBS) // Right-hand HRMs.
+MAKE_HRM(hmr, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 
 #define META_A  &hml LMETA A
 #define CTRL_S  &hml LCTRL S
@@ -109,6 +110,10 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
 #define SHIFT_K &hmr RSHFT K
 #define CTRL_L  &hmr RCTRL L
 #define META_SC &hmr RMETA SEMI
+
+#define ALT_LCLK   &hmr RALT LCLK
+#define SHIFT_MCLK &hmr RSHFT MCLK
+#define CTRL_RCLK  &hmr RCTRL RCLK
 
 //========//
 // COMBOS //
@@ -557,7 +562,7 @@ SIMPLE_MORPH(rpar_gt, SFT, &kp RPAR, &kp GT)
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans      &trans  
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ LEFT  CLK ┃ MID CLICK ┃ RIGHT CLK ┃           ┃           ┃           ┃
-                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &mkp LCLK   &mkp MCLK   &mkp RCLK     &trans      &trans      &trans  
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans    ALT_LCLK   &mkp MCLK   &mkp RCLK     &trans      &trans      &trans  
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans      &trans  
