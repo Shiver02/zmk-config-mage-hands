@@ -556,8 +556,8 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans      &trans  
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃  FORWARD  ┃           ┃           ┃   BACK    ┃           ┃
-                                         &trans      &trans      &trans      &trans      &trans        &mkp MB5      &trans     &trans     &mkp MB4      &trans 
+//                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃   BACK    ┃           ┃           ┃  FORWARD  ┃           ┃
+                                         &trans      &trans      &trans      &trans      &trans        &mkp MB4      &trans      &trans     &mkp MB5     &trans 
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
