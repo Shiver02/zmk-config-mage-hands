@@ -99,7 +99,6 @@
 
 MAKE_HRM(hml, &kp, &kp,  KEYS_R THUMBS) // Left-hand HRMs.
 MAKE_HRM(hmr, &kp, &kp,  KEYS_L THUMBS) // Right-hand HRMs.
-MAKE_HRM(hmr, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 
 #define META_A  &hml LMETA A
 #define CTRL_S  &hml LCTRL S
