@@ -73,10 +73,6 @@
 // Based on: https://github.com/urob/zmk-config?tab=readme-ov-file#timeless-homerow-modsj //
 //========================================================================================//
 
-#define QUICK_TAP_MS 175
-
-#define ZMK_HOLD_TAP(name, ...) ZMK_BEHAVIOR(name, hold_tap, __VA_ARGS__)
-
 /*                KEY POSITIONS
   ╭──────────────────────╮ ╭──────────────────────╮
   │  0  1  2  3  4  5  6 │ │  7  8  9 10 11 12 EC │
@@ -88,6 +84,8 @@
               │ 71 72 73 │ │ 74 75 76 │
               ╰──────────╯ ╰──────────╯ 
 */
+
+#define QUICK_TAP_MS 175
 
 #define KEYS_L   0  1  2  3  4  5  6  13 14 15 16 17 18 19  27 28 29 30 31 32 33  41 42 43 44 45 46 47  55 56 57 58 59 60 61  
 #define KEYS_R   7  8  9 10 11 12     20 21 22 23 24 25 26  34 35 36 37 38 39 40  48 49 50 51 52 53 54  62 63 64 65 66 67 68
@@ -115,25 +113,36 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
 //========//
 // COMBOS //
 //========//
-// Hack: Make HRM combos tap-only (cf, ZMK issue #544).
-#define ZMK_COMBO_8(NAME, TAP, POS, LAYERS, COMBO_MS, IDLE_MS, HOLD, SIDE)     \
-  /*MAKE_HRM(hm_combo_##NAME, &kp, TAP, SIDE THUMBS)*/                             \
-  ZMK_COMBO_6(NAME, &hm_combo_##NAME HOLD 0, POS, LAYERS, COMBO_MS, IDLE_MS)
-
 #define COMBO_TERM_FAST 18
 #define COMBO_TERM_SLOW 30
 
 #define COMBO_IDLE_FAST 150
 #define COMBO_IDLE_SLOW 50
 
+// Hack: Make HRM combos tap-only (cf, ZMK issue #544).
+#define ZMK_COMBO_8(NAME, TAP, POS, LAYERS, COMBO_MS, IDLE_MS, HOLD, SIDE)     \
+  MAKE_HRM(hm_combo_##NAME, &kp, TAP, SIDE THUMBS)                             \
+  ZMK_COMBO_6(NAME, &hm_combo_##NAME HOLD 0, POS, LAYERS, COMBO_MS, IDLE_MS)
 
-ZMK_COMBO(lpar,  &kp LPAR, 49 50, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL), KEYS_L)
-ZMK_COMBO(rpar,  &kp RPAR, 50 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LALT),  KEYS_L)
+ZMK_COMBO(lpar,  &lpar_lt,     RM1 RM2,     DEF     NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL),    KEYS_L)
+ZMK_COMBO(rpar,  &rpar_gt,     RM2 RM3,     DEF     NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LALT),     KEYS_L)
+
+//ZMK_COMBO(lpar,  &kp LPAR, 49 50, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL), KEYS_L)
+//ZMK_COMBO(rpar,  &kp RPAR, 50 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LALT),  KEYS_L)
 
 ZMK_COMBO(lbkt,  &kp LBKT, 35 36, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rbkt,  &kp RBKT, 36 37, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(lbrc,  &kp LBRC, 63 64, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rbrc,  &kp RBRC, 64 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+// Define mod-morph with a *single* mod trigger for less repetition.
+#define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
+  ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
+                bindings = <BINDING1>, <BINDING2>;)
+                
+// Tap: left/right parenthesis | Shft + tap: less-than/greater-than.
+SIMPLE_MORPH(lpar_lt, SFT, &kp LPAR, &kp LT)
+SIMPLE_MORPH(rpar_gt, SFT, &kp RPAR, &kp GT)
 
 / {
     ctrl_alt_btn: ctrl_alt_btn {
