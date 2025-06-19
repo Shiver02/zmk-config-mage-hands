@@ -9,6 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <zmk-helpers/helper.h>
 
 //Layer Names
 #define HOME_LAYER   0
@@ -402,7 +403,7 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
 };
 
 &mkp_input_listener {
-	input-processors = <&zip_temp_layer 3 200>;
+	input-processors = <&zip_temp_layer 3 250>;
 };
 
 / {
