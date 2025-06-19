@@ -399,6 +399,10 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
     };
 };
 
+mkp_input_listener {
+    input-processors = <&zip_temp_layer 2 200>;
+};
+
 / {
     combos {
         compatible = "zmk,combos";

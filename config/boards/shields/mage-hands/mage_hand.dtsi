@@ -165,8 +165,4 @@
         status = "disabled";
         device = <&trackball_peripheral_split>;
     };
-
-    &mkp_input_listener {
-        input-processors = <&zip_temp_layer 2 200>;
-    };
 };
