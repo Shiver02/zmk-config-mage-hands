@@ -17,6 +17,7 @@ manifest:
       remote: badjeff
       revision: main
     - name: zmk-helpers
-      path: modules/zmk/helpers
+      remote: urob
+      revision: main
   self:
     path: config
