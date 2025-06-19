@@ -70,6 +70,8 @@
 //==============//
 // HOMEROW MODS //
 //==============//
+
+#define QUICK_TAP_MS 175
 #define ZMK_BEHAVIOR_CORE_hold_tap        compatible = "zmk,behavior-hold-tap";        #binding-cells = <2>
 
 #define ZMK_BEHAVIOR(name, type, ...) \
@@ -96,8 +98,35 @@
 
 MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS) // Left-hand HRMs.
 MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
-
-
+/*
+/{
+    behaviors {
+        hml: hml {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>; 
+            flavor = "balanced";
+            tapping-term-ms = <280>; 
+            quick-tap-ms = <QUICK_TAP_MS>;
+            require-prior-idle-ms = <150>; 
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <KEYS_R THUMBS>;
+        };
+        
+        hmr: hmr {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>; 
+            flavor = "balanced";
+            tapping-term-ms = <280>; 
+            quick-tap-ms = <QUICK_TAP_MS>;
+            require-prior-idle-ms = <150>; 
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <KEYS_L THUMBS>;
+        };
+    };
+};
+*/
 #define META_A  &hml LMETA A
 #define CTRL_S  &hml LCTRL S
 #define SHIFT_D &hml LSHFT D
