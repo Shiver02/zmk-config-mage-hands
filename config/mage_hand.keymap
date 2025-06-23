@@ -14,8 +14,9 @@
 //Layer Names
 #define HOME_LAYER   0
 #define NAVIG_LAYER  1
-#define SYMBOL_LAYER 2
+#define NUMBER_LAYER 2
 #define MOUSE_LAYER  3
+#define ALL_LAYERS   0 1 2 3
 
 // Short versions
 #define RGBON   &rgb_ug RGB_ON
@@ -65,7 +66,7 @@
 
 #define MT_HOME  &mo_tog HOME_LAYER   HOME_LAYER
 #define MT_NAV   &mo_tog NAVIG_LAYER  NAVIG_LAYER
-#define MT_SYMB  &mo_tog SYMBOL_LAYER SYMBOL_LAYER
+#define MT_NUMB  &mo_tog NUMBER_LAYER NUMBER_LAYER
 #define MT_MOUSE &mo_tog MOUSE_LAYER  MOUSE_LAYER
 
 //========================================================================================//
@@ -104,17 +105,33 @@ MAKE_HRM(hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 #define META_A  &hml LMETA A
 #define CTRL_S  &hml LCTRL S
 #define SHIFT_D &hml LSHFT D
-#define ALT_F   &hml LALT F
+#define ALT_F   &hml LALT  F
 
-#define ALT_J   &hmr RALT J
+#define ALT_J   &hmr RALT  J
 #define SHIFT_K &hmr RSHFT K
 #define CTRL_L  &hmr LCTRL L    //using left ctrl here because right ctrl works weird in canadian multilingual
 #define META_SC &hmr RMETA SEMI
+
+
+//hrm on number layer
+#define META_1  &hml LMETA N1
+#define CTRL_2  &hml LCTRL N2
+#define SHIFT_3 &hml LSHFT N3
+#define ALT_4   &hml LALT  N4
+
+#define ALT_7   &hmr RALT  N7
+#define SHIFT_8 &hmr RSHFT N8
+#define CTRL_9  &hmr LCTRL N9    //using left ctrl here because right ctrl works weird in canadian multilingual
+#define META_0  &hmr RMETA N0
+
 
 //using hrm on mouse layer to help reduce interference with shortcuts - hope it works
 #define ALT_LCLK   &hmr_m RALT  LCLK //not used cause left click behavior is too complex
 #define SHIFT_MCLK &hmr_m RSHFT MCLK //
 #define CTRL_RCLK  &hmr_m LCTRL RCLK //using left ctrl here because right ctrl works weird in canadian multilingual
+
+
+//using hrm on navig lager
 
 //========//
 // COMBOS //
@@ -131,34 +148,39 @@ MAKE_HRM(hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
   ZMK_COMBO_6(NAME, &hm_combo_##NAME HOLD 0, POS, LAYERS, COMBO_MS, IDLE_MS)
 
 
-ZMK_COMBO(lesc,  &kp ESC,   29 30, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lstar, &kp STAR,  30 31, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lbkt,  &kp LBKT,  31 32, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lesc,  &kp ESC,   29 30, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lstar, &kp STAR,  30 31, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lbkt,  &kp LBKT,  31 32, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rbkt,  &kp RBKT,  35 36, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rbslh, &kp BSLH,  36 37, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rat,   &kp AT,    37 38, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
-ZMK_COMBO(ltab,       &tab_tab,   43 44, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LMETA),    KEYS_R)
-ZMK_COMBO(lequl_excl, &equl_excl, 44 45, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LS(LCTRL),    KEYS_R)
-ZMK_COMBO(lpar_hash,  &lpar_hash, 45 46, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LS(LALT),     KEYS_R)
+ZMK_COMBO(ltab,       &tab_tab,   43 44, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LMETA),    KEYS_R)
+ZMK_COMBO(lequl_excl, &equl_excl, 44 45, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST, LS(LCTRL),    KEYS_R)
+ZMK_COMBO(lpar_hash,  &lpar_hash, 45 46, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST, LS(LALT),     KEYS_R)
 ZMK_COMBO(rpar_perc,  &rpar_perc, 49 50, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(RALT),     KEYS_L)
 ZMK_COMBO(rundr_amps, &undr_amps, 50 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL),    KEYS_L)
 ZMK_COMBO(rdllr,      &dllr_dllf, 51 52, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RC(RMETA),    KEYS_L)
 
-ZMK_COMBO(lgrave, &kp GRAVE, 57 58, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lplus,  &kp PLUS,  58 59, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lbrc,   &kp LBRC,  59 60, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lgrave, &kp GRAVE, 57 58, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lplus,  &kp PLUS,  58 59, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lbrc,   &kp LBRC,  59 60, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rbrc,   &kp RBRC,  63 64, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rminus, &kp MINUS, 64 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rcaret, &kp CARET, 65 66, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 //split combos, pointer + 4th finger
-ZMK_COMBO(lf2,    &kp F2,    30 32, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lf5,    &f5_f5,    44 46, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LALT),     KEYS_R)
-ZMK_COMBO(lf9,    &kp F9,    58 60, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lf2,    &kp F2,    30 32, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lf5,    &f5_f5,    44 46, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LALT),     KEYS_R)
+ZMK_COMBO(lf9,    &kp F9,    58 60, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rf10,   &kp F10,   35 37, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rf11,   &f11_f11,  49 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(RALT),     KEYS_L)
 ZMK_COMBO(rf12,   &kp F12,   63 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+
+ZMK_COMBO(pgUp,   &kp PG_UP, 36 37, NAVIG_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(pgDwn,  &kp PG_DN, 64 65, NAVIG_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
 
 
 // Define mod-morph with a *single* mod trigger for less repetition. These are used with homerow mod combos
@@ -177,6 +199,8 @@ SIMPLE_MORPH(dllr_dllf, SFT, &kp DLLR,  &kp DLLR)
 //for spread combos
 SIMPLE_MORPH(f5_f5,     SFT, &kp F5,    &kp F5)
 SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
+SIMPLE_MORPH(f5_f6,     SFT, &kp F5,    &kp F6)
+SIMPLE_MORPH(f8_f7,     SFT, &kp F8,    &kp F7)
 
 
 / {
@@ -254,30 +278,30 @@ SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
     mo_num: mo_num {
         compatible = "zmk,behavior-macro";
         #binding-cells = <0>;
-        bindings = <&macro_press &mo SYMBOL_LAYER>
+        bindings = <&macro_press &mo NUMBER_LAYER>
                  , <&macro_tap SET_NUM_RGB>
                  , <&macro_pause_for_release>
-                 , <&macro_release &mo SYMBOL_LAYER>
+                 , <&macro_release &mo NUMBER_LAYER>
                  , <&macro_tap SET_HOME_RGB>;
     };
 
     mo_num_from_nav: mo_num_from_nav {
         compatible = "zmk,behavior-macro";
         #binding-cells = <0>;
-        bindings = <&macro_press &mo SYMBOL_LAYER>
+        bindings = <&macro_press &mo NUMBER_LAYER>
                  , <&macro_tap SET_NUM_RGB>
                  , <&macro_pause_for_release>
-                 , <&macro_release &mo SYMBOL_LAYER>
+                 , <&macro_release &mo NUMBER_LAYER>
                  , <&macro_tap SET_NAV_RGB>;
     };
 
     mo_num_from_mouse: mo_num_from_mouse {
         compatible = "zmk,behavior-macro";
         #binding-cells = <0>;
-        bindings = <&macro_press &mo SYMBOL_LAYER>
+        bindings = <&macro_press &mo NUMBER_LAYER>
                  , <&macro_tap SET_NUM_RGB>
                  , <&macro_pause_for_release>
-                 , <&macro_release &mo SYMBOL_LAYER>
+                 , <&macro_release &mo NUMBER_LAYER>
                  , <&macro_tap SET_MOUS_RGB>;
     };
     
@@ -334,10 +358,10 @@ SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
     to_num: to_num {
         compatible = "zmk,behavior-macro";
         #binding-cells = <0>;
-        bindings = <&macro_press &to SYMBOL_LAYER>
+        bindings = <&macro_press &to NUMBER_LAYER>
                  , <&macro_tap SET_NUM_RGB>
                  , <&macro_pause_for_release>
-                 , <&macro_release &to SYMBOL_LAYER>;
+                 , <&macro_release &to NUMBER_LAYER>;
     };
     
     to_home: to_home {
@@ -501,7 +525,7 @@ SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
 
         default_layer {
             display-name = " Home";
-            sensor-bindings =                                                                                                                               <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings =                                                                                                                             <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
 //           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
 //           ┃    ESC    ┃     F1    ┃     F2    ┃     F3    ┃     F4    ┃     F5    ┃     F6    ┃   ┃     F7    ┃     F8    ┃     F9    ┃    F10    ┃    F11    ┃    F12    ┃   VOLUME  ┃
@@ -519,31 +543,31 @@ SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
 //           ┃     G3    ┃   SHIFT   ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     N     ┃     M     ┃     ,     ┃     .     ┃     /     ┃   SHIFT   ┃   MUTE    ┃
                B_LIT_DN    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃  DELETE   ┃    TAB    ┃   SYMBOL  ┃   NAVIG   ┃   SPACE   ┃   ┃   DELETE  ┃   SPACE   ┃   ENTER   ┃    TAB    ┃ BACKSPACE ┃
-                                        &kp DEL     &kp TAB     MT_SYMB      MT_NAV    &kp SPACE        &kp DEL    &kp SPACE    &kp RET     &kp TAB    &kp BSPC   
+//                                   ┃  DELETE   ┃    TAB    ┃   NUMBER  ┃   NAVIG   ┃   SPACE   ┃   ┃   DELETE  ┃   SPACE   ┃   ENTER   ┃    TAB    ┃ BACKSPACE ┃
+                                        &kp DEL     &kp TAB     MT_NUMB      MT_NAV    &kp SPACE        &kp DEL    &kp SPACE    &kp RET     &kp TAB    &kp BSPC   
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
 
         navig_layer {
             display-name = " Navig";
-            sensor-bindings =                                                                                                                                           <&inc_dec_kp UP DOWN>;
+            sensor-bindings =                                                                                                                             <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
 //           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃PRINT SCRN ┃SCROLL LCK ┃ PAUSE BRK ┃           ┃           ┃  UP/DOWN  ┃
-                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp PSCRN    &kp SLCK    _PAUSE_      &trans      &trans    //ENCODER
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃  UP/DOWN  ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans    //ENCODER
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃  INSERT   ┃    HOME   ┃   PG UP   ┃           ┃           ┃    BT 1   ┃
-                 RGBTOG      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp INS    &kp HOME    &kp PG_UP     &trans      &trans    BT_PROF 1 
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃    BT 1   ┃
+                 RGBTOG      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans    BT_PROF 1 
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃  DELETE   ┃    END    ┃  PG DOWN  ┃           ┃           ┃    BT 2   ┃
-                 RGBBRI      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp DEL     &kp END    &kp PG_DN     &trans      &trans    BT_PROF 2 
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃  INSERT   ┃PRINT SCRN ┃           ┃           ┃           ┃    BT 2   ┃
+                 RGBBRI      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp INS    &kp PSCRN     &trans      &trans      &trans    BT_PROF 2 
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     [     ┃  UP  ARW  ┃     ]     ┃           ┃           ┃    BT 3   ┃
-                 RGBBRD      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp LBKT      &kp UP    &kp RBKT      &trans      &trans    BT_PROF 3 
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ LEFT  ARW ┃  UP  ARW  ┃ RIGHT ARW ┃           ┃           ┃    BT 3   ┃
+                 RGBBRD      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp LEFT     &kp UP     &kp RIGHT     &trans      &trans    BT_PROF 3 
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ LEFT  ARW ┃ DOWN  ARW ┃ RIGHT ARW ┃           ┃           ┃ BT CLEAR  ┃
-                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp LEFT   &kp DOWN    &kp RIGHT     &trans      &trans   &bt BT_CLR
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃   HOME    ┃ DOWN  ARW ┃    END    ┃           ┃           ┃ BT CLEAR  ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans    &kp HOME    &kp DOWN     &kp END      &trans      &trans   &bt BT_CLR
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                   ┃           ┃           ┃           ┃   HOME    ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃
                                          &trans      &trans      &trans     MT_HOME      &trans          &trans      &trans      &trans      &trans      &trans
@@ -551,9 +575,9 @@ SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
             >;
         };
 
-        symbol_layer {
-            display-name = "Symbols";
-            sensor-bindings =                                                                                                                               <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        number_layer {
+            display-name = "Numbers";
+            sensor-bindings =                                                                                                                             <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
 //           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃   VOLUME  ┃
@@ -562,14 +586,14 @@ SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃    BT 1   ┃
                  RGBTOG      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans    BT_PROF 1 
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃     [     ┃     ]     ┃           ┃   ┃     _     ┃     (     ┃     )     ┃     -     ┃     =     ┃     \     ┃    BT 2   ┃
-                 RGBBRI      &trans      &trans      &trans    &kp LBKT    &kp RBKT      &trans        &kp UNDER   &kp LPAR    &kp RPAR    &kp MINUS   &kp EQUAL   &kp BSLH    BT_PROF 2 
+//           ┃           ┃           ┃     F1    ┃     F2    ┃     F3    ┃     F4    ┃  F5/F6    ┃   ┃   F8/F7   ┃     F9    ┃    F10    ┃    F11    ┃    F12    ┃           ┃    BT 2   ┃
+                 RGBBRI      &trans      &kp F1      &kp F2      &kp F3      &kp F4     &f5_f6           &f8_f7      &kp F9     &kp F10     &kp F11     &kp F12      &trans    BT_PROF 2 
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃    ` ~    ┃     1     ┃     2     ┃     3     ┃     4     ┃     5     ┃   ┃     6     ┃     7     ┃     8     ┃     9     ┃     0     ┃           ┃    BT 3   ┃
-                 RGBBRD    &kp GRAVE    &kp N1      &kp N2      &kp N3      &kp N4      &kp N5          &kp N6      &kp N7      &kp N8      &kp N9      &kp N0       &trans    BT_PROF 3  
+//           ┃           ┃    ` ~    ┃   META_1  ┃  CTRL_2   ┃  SHIFT_3  ┃   ALT_4   ┃     5     ┃   ┃     6     ┃   ALT_7   ┃  SHIFT_8  ┃   CTRL_9  ┃   META_0  ┃           ┃    BT 3   ┃
+                 RGBBRD    &kp GRAVE     META_1     CTRL_2      SHIFT_3      ALT_4      &kp N5          &kp N6       ALT_7      SHIFT_8      CTRL_9      META_0      &trans    BT_PROF 3  
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃           ┃           ┃           ┃     <     ┃     >     ┃           ┃   ┃           ┃     {     ┃     }     ┃           ┃           ┃           ┃ BT CLEAR  ┃
-                 &trans      &trans      &trans      &trans     &kp LT      &kp GT       &trans          &trans    &kp LBRC    &kp RBRC      &trans      &trans      &trans   &bt BT_CLR 
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃ BT CLEAR  ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans   &bt BT_CLR 
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                   ┃           ┃           ┃   HOME    ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃
                                          &trans      &trans     MT_HOME      &trans      &trans          &trans      &trans      &trans      &trans      &trans
@@ -579,7 +603,7 @@ SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
 
         mouse_layer {
             display-name = " Mouse";
-            sensor-bindings =                                                                                                                                    <&rot_mouse_scroll SCRL_UP SCRL_DOWN>;
+            sensor-bindings =                                                                                                                             <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
 //           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃    MOUSE  ┃
