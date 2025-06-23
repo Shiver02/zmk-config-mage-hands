@@ -145,18 +145,18 @@ ZMK_COMBO(rpar_perc,  &rpar_perc, 49 50, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE
 ZMK_COMBO(rundr_amps, &undr_amps, 50 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL),    KEYS_L)
 ZMK_COMBO(rdllr,      &dllr_dllf, 51 52, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RC(RMETA),    KEYS_L)
 
-ZMK_COMBO(lgrave, &kp GRAVE, 59 60, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lplus,  &kp PLUS,  59 60, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lgrave, &kp GRAVE, 57 58, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lplus,  &kp PLUS,  58 59, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(lbrc,   &kp LBRC,  59 60, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rbrc,   &kp RBRC,  63 64, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rminus, &kp MINUS, 63 64, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rcaret, &kp CARET, 63 64, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rminus, &kp MINUS, 64 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rcaret, &kp CARET, 65 66, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 //split combos, pointer + 4th finger
-ZMK_COMBO(lf2,    &kp F2,    63 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lf5,    &f5_f5,    49 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LALT),     KEYS_R)
-ZMK_COMBO(lf9,    &kp F9,    63 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rf10,   &kp F10,   63 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lf2,    &kp F2,    30 32, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lf5,    &f5_f5,    44 46, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LALT),     KEYS_R)
+ZMK_COMBO(lf9,    &kp F9,    58 60, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rf10,   &kp F10,   35 37, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rf11,   &f11_f11,  49 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(RALT),     KEYS_L)
 ZMK_COMBO(rf12,   &kp F12,   63 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
@@ -519,8 +519,8 @@ SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
 //           ┃     G3    ┃   SHIFT   ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     N     ┃     M     ┃     ,     ┃     .     ┃     /     ┃   SHIFT   ┃   MUTE    ┃
                B_LIT_DN    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃  DELETE   ┃    TAB    ┃   NAVIG   ┃   SYMBOL  ┃   SPACE   ┃   ┃   DELETE  ┃   SPACE   ┃   ENTER   ┃    TAB    ┃ BACKSPACE ┃
-                                        &kp DEL     &kp TAB      MT_NAV     MT_SYMB    &kp SPACE        &kp DEL    &kp SPACE    &kp RET     &kp TAB    &kp BSPC   
+//                                   ┃  DELETE   ┃    TAB    ┃   SYMBOL  ┃   NAVIG   ┃   SPACE   ┃   ┃   DELETE  ┃   SPACE   ┃   ENTER   ┃    TAB    ┃ BACKSPACE ┃
+                                        &kp DEL     &kp TAB     MT_SYMB      MT_NAV    &kp SPACE        &kp DEL    &kp SPACE    &kp RET     &kp TAB    &kp BSPC   
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -545,8 +545,8 @@ SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ LEFT  ARW ┃ DOWN  ARW ┃ RIGHT ARW ┃           ┃           ┃ BT CLEAR  ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans     &kp LEFT   &kp DOWN    &kp RIGHT     &trans      &trans   &bt BT_CLR
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃           ┃   HOME    ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃
-                                         &trans      &trans     MT_HOME      &trans      &trans          &trans      &trans      &trans      &trans      &trans
+//                                   ┃           ┃           ┃           ┃   HOME    ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃
+                                         &trans      &trans      &trans     MT_HOME      &trans          &trans      &trans      &trans      &trans      &trans
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -571,8 +571,8 @@ SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
 //           ┃           ┃           ┃           ┃           ┃     <     ┃     >     ┃           ┃   ┃           ┃     {     ┃     }     ┃           ┃           ┃           ┃ BT CLEAR  ┃
                  &trans      &trans      &trans      &trans     &kp LT      &kp GT       &trans          &trans    &kp LBRC    &kp RBRC      &trans      &trans      &trans   &bt BT_CLR 
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃           ┃           ┃           ┃   HOME    ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃
-                                         &trans      &trans      &trans     MT_HOME      &trans          &trans      &trans      &trans      &trans      &trans
+//                                   ┃           ┃           ┃   HOME    ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃
+                                         &trans      &trans     MT_HOME      &trans      &trans          &trans      &trans      &trans      &trans      &trans
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
