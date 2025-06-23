@@ -131,27 +131,53 @@ MAKE_HRM(hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
   ZMK_COMBO_6(NAME, &hm_combo_##NAME HOLD 0, POS, LAYERS, COMBO_MS, IDLE_MS)
 
 
-ZMK_COMBO(lbkt,  &kp LBKT,  35 36, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rbkt,  &kp RBKT,  36 37, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lesc,  &kp ESC,   29 30, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lstar, &kp STAR,  30 31, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lbkt,  &kp LBKT,  31 32, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rbkt,  &kp RBKT,  35 36, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rbslh, &kp BSLH,  36 37, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rat,   &kp AT,    37 38, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
-ZMK_COMBO(lpar,  &lpar_lt,     49 50, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL),    KEYS_L)
-ZMK_COMBO(rpar,  &rpar_gt,     50 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LALT),     KEYS_L)
-ZMK_COMBO(unsc,  &under_minus, 49 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LALT),     KEYS_L)
+ZMK_COMBO(ltab,       &tab_tab,   43 44, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LMETA),    KEYS_R)
+ZMK_COMBO(lequl_excl, &equl_excl, 44 45, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LS(LCTRL),    KEYS_R)
+ZMK_COMBO(lpar_hash,  &lpar_hash, 45 46, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LS(LALT),     KEYS_R)
+ZMK_COMBO(rpar_perc,  &rpar_perc, 49 50, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(RALT),     KEYS_L)
+ZMK_COMBO(rundr_amps, &undr_amps, 50 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL),    KEYS_L)
+ZMK_COMBO(rdllr,      &dllr_dllf, 51 52, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RC(RMETA),    KEYS_L)
 
-ZMK_COMBO(lbrc,  &kp LBRC,  63 64, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rbrc,  &kp RBRC,  64 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(equl,  &kp EQUAL, 63 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lgrave, &kp GRAVE, 59 60, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lplus,  &kp PLUS,  59 60, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lbrc,   &kp LBRC,  59 60, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rbrc,   &kp RBRC,  63 64, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rminus, &kp MINUS, 63 64, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rcaret, &kp CARET, 63 64, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+//split combos, pointer + 4th finger
+ZMK_COMBO(lf2,    &kp F2,    63 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lf5,    &f5_f5,    49 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LALT),     KEYS_R)
+ZMK_COMBO(lf9,    &kp F9,    63 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rf10,   &kp F10,   63 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rf11,   &f11_f11,  49 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(RALT),     KEYS_L)
+ZMK_COMBO(rf12,   &kp F12,   63 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 
-// Define mod-morph with a *single* mod trigger for less repetition.
+// Define mod-morph with a *single* mod trigger for less repetition. These are used with homerow mod combos
 #define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
   ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
                 bindings = <BINDING1>, <BINDING2>;)
 
-// Tap: left/right parenthesis | Shft + tap: less-than/greater-than.
-SIMPLE_MORPH(lpar_lt,     SFT, &kp LPAR,  &kp LT)
-SIMPLE_MORPH(rpar_gt,     SFT, &kp RPAR,  &kp GT)
-SIMPLE_MORPH(under_minus, SFT, &kp UNDER, &kp MINUS) // Tap: underscore | Shift + tap: minus   (reverse of minus key)
+SIMPLE_MORPH(tab_tab,   SFT, &kp TAB,   &kp TAB)
+SIMPLE_MORPH(equl_excl, SFT, &kp EQUAL, &kp EXCL)
+SIMPLE_MORPH(lpar_hash, SFT, &kp LPAR,  &kp HASH)
+
+SIMPLE_MORPH(rpar_perc, SFT, &kp RPAR,  &kp PRCNT)
+SIMPLE_MORPH(undr_amps, SFT, &kp UNDER, &kp AMPS)
+SIMPLE_MORPH(dllr_dllf, SFT, &kp DLLR,  &kp DLLR)
+
+//for spread combos
+SIMPLE_MORPH(f5_f5,     SFT, &kp F5,    &kp F5)
+SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
+
 
 / {
     ctrl_alt_btn: ctrl_alt_btn {
