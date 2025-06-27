@@ -21,3 +21,5 @@ manifest:
       revision: main
   self:
     path: config
+  parse_config:
+    zmk_additional_includes: ["zmk-helpers/include"]
