@@ -107,7 +107,7 @@ MAKE_HRM(hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 #define SHIFT_D &hml LSHFT D
 #define ALT_F   &hml LALT  F
 
-#define ALT_J   &hmr RALT  J
+#define ALT_J   &hmr LALT  J
 #define SHIFT_K &hmr RSHFT K
 #define CTRL_L  &hmr LCTRL L    //using left ctrl here because right ctrl works weird in canadian multilingual
 #define META_SC &hmr RMETA SEMI
@@ -119,14 +119,14 @@ MAKE_HRM(hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 #define SHIFT_3 &hml LSHFT N3
 #define ALT_4   &hml LALT  N4
 
-#define ALT_7   &hmr RALT  N7
+#define ALT_7   &hmr LALT  N7
 #define SHIFT_8 &hmr RSHFT N8
 #define CTRL_9  &hmr LCTRL N9    //using left ctrl here because right ctrl works weird in canadian multilingual
 #define META_0  &hmr RMETA N0
 
 
 //using hrm on mouse layer to help reduce interference with shortcuts - hope it works
-#define ALT_LCLK   &hmr_m RALT  LCLK //not used cause left click behavior is too complex
+#define ALT_LCLK   &hmr_m LALT  LCLK //not used cause left click behavior is too complex
 #define SHIFT_MCLK &hmr_m RSHFT MCLK //
 #define CTRL_RCLK  &hmr_m LCTRL RCLK //using left ctrl here because right ctrl works weird in canadian multilingual
 
@@ -158,9 +158,9 @@ ZMK_COMBO(rcaret, &kp CARET, 37 38, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST
 ZMK_COMBO(ltab,       &tab_tab,   43 44, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LMETA),    KEYS_R)
 ZMK_COMBO(lequl_excl, &equl_excl, 44 45, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST, LS(LCTRL),    KEYS_R)
 ZMK_COMBO(lpar_hash,  &lpar_hash, 45 46, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST, LS(LALT),     KEYS_R)
-ZMK_COMBO(rpar_perc,  &rpar_perc, 49 50, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(RALT),     KEYS_L)
+ZMK_COMBO(rpar_perc,  &rpar_perc, 49 50, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LALT),     KEYS_L)
 ZMK_COMBO(rundr_amps, &undr_amps, 50 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL),    KEYS_L)
-ZMK_COMBO(rdllr,      &dllr_at,   51 52, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RC(RMETA),    KEYS_L)
+ZMK_COMBO(rdllr,      &dllr_at,   51 52, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(RMETA),    KEYS_L)
 
 ZMK_COMBO(lgrave, &kp GRAVE, 57 58, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(lplus,  &kp PLUS,  58 59, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
@@ -174,7 +174,7 @@ ZMK_COMBO(lf2,    &kp F2,    30 32, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST
 ZMK_COMBO(lf5,    &f5_f5,    44 46, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LALT),     KEYS_R)
 ZMK_COMBO(lf9,    &kp F9,    58 60, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rf10,   &kp F10,   35 37, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rf11,   &f11_f11,  49 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(RALT),     KEYS_L)
+ZMK_COMBO(rf11,   &f11_f11,  49 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LALT),     KEYS_L)
 ZMK_COMBO(rf12,   &kp F12,   63 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 
