@@ -48,7 +48,7 @@ ZMK_COMBO(rapos,     &kp APOS,   64 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_
 ZMK_COMBO(lat,       &kp AT,     30 44, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(lhash,     &kp HASH,   31 45, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(ldllr,     &kp DLLR,   32 46, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lhash,     &kp PRCNT,  33 47, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lpcent,    &kp PRCNT,  33 47, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 ZMK_COMBO(lgrave,    &kp GRAVE,  44 58, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(lexcl,     &kp EXCL,   45 59, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
@@ -100,4 +100,4 @@ SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
 SIMPLE_MORPH(f5_f6,     SFT, &kp F5,    &kp F6)
 SIMPLE_MORPH(f8_f7,     SFT, &kp F8,    &kp F7)
 
-ZMK_MACRO(cut_macro, bindings = <&kp LCTRL &kp X>; wait-ms = <0>; tap-ms = <5>;)
+ZMK_MACRO(cut_macro, bindings = .<&macro_press &kp LCTRL>,<&kp X>,<&macro_release &kp LCTRL>; wait-ms = <0>; tap-ms = <5>;)
