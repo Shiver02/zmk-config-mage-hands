@@ -11,6 +11,7 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <zmk-helpers/helper.h>
 #include <behaviors/num_word.dtsi>
+#include "key_labels.h"
 
 //Layer Names
 #define HOME_LAYER   0
