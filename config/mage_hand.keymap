@@ -335,7 +335,7 @@ MAKE_HRM(hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
             bindings = <&mo>, <&to>;
         };
 
-        numWrd_tog: behavior_mo_to {
+        numWrd_tog: behavior_numWrd_tog {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
