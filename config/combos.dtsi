@@ -86,7 +86,7 @@ ZMK_COMBO(pgDwn,  &kp PG_DN, 64 65, NAVIG_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAS
   ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
                 bindings = <BINDING1>, <BINDING2>;)
 
-SIMPLE_MORPH(tab_tab,   SFT, &kp TAB,   &kp TAB)
+SIMPLE_MORPH(tab_tab,   SFT, &kp TAB,   &kp LS(TAB))
 SIMPLE_MORPH(equl_excl, SFT, &kp EQUAL, &kp EXCL)
 SIMPLE_MORPH(lpar_lt,   SFT, &kp LPAR,  &kp LT)
 
