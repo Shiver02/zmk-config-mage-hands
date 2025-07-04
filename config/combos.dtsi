@@ -11,7 +11,7 @@
                   ╰────────────╯ ╰────────────╯                                   ╰─────────────╯ ╰─────────────╯ 
 */
 
-#define COMBO_TERM_FAST 18
+#define COMBO_TERM_FAST 22 //default was 18
 #define COMBO_TERM_SLOW 30
 
 #define COMBO_IDLE_FAST 150
@@ -34,13 +34,13 @@ ZMK_COMBO(lpar_lt,   &lpar_lt,   45 46, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_
 ZMK_COMBO(lbrc,      &kp LBRC,   59 60, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 //right
-ZMK_COMBO(rbkt,      &kp RBKT,   35 36, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rpar_gt,   &rpar_gt,   49 50, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LALT),     KEYS_L)
-ZMK_COMBO(rbrc,      &kp RBRC,   63 64, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rbkt,      &kp RBKT,   35 36, HOME_N_NUMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rpar_gt,   &rpar_gt,   49 50, HOME_N_NUMB, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LALT),     KEYS_L)
+ZMK_COMBO(rbrc,      &kp RBRC,   63 64, HOME_N_NUMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
-ZMK_COMBO(lf9,       &kp F9,     37 38, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(runder,    &undr_undr, 50 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL),    KEYS_L)
-ZMK_COMBO(rapos,     &kp APOS,   64 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lf9,       &kp F9,     37 38, HOME_N_NUMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(runder,    &undr_undr, 50 51, HOME_N_NUMB, COMBO_TERM_FAST, COMBO_IDLE_FAST, RS(LCTRL),    KEYS_L)
+ZMK_COMBO(rapos,     &kp APOS,   64 65, HOME_N_NUMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 
 //vertical combos
@@ -55,14 +55,14 @@ ZMK_COMBO(lexcl,     &kp EXCL,   45 59, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_
 ZMK_COMBO(lequl,     &kp EQUAL,  46 60, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 //right
-ZMK_COMBO(rcaret,    &kp CARET,  34 48, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(ramps,     &kp AMPS,   35 49, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rstar,     &kp STAR,   36 50, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rplus,     &kp PLUS,   37 51, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rcaret,    &kp CARET,  34 48, HOME_N_NUMB,  COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(ramps,     &kp AMPS,   35 49, HOME_N_NUMB,  COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rstar,     &kp STAR,   36 50, HOME_N_NUMB,  COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rplus,     &kp PLUS,   37 51, HOME_N_NUMB,  COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
-ZMK_COMBO(lpipe,     &kp PIPE,   49 63, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rbslh,     &kp BSLH,   50 64, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rminus,    &kp MINUS,  51 65, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lpipe,     &kp PIPE,   49 63, HOME_N_NUMB,  COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rbslh,     &kp BSLH,   50 64, HOME_N_NUMB,  COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rminus,    &kp MINUS,  51 65, HOME_N_NUMB,  COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 
 //split combos
@@ -112,6 +112,23 @@ macros {
                 ;
             wait-ms = <0>; 
             tap-ms  = <5>;
+        };
+    };
+};
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+        combo_return_home {
+            timeout-ms = <50>;
+            key-positions = <69 78>;
+            bindings = <&to HOME_LAYER>;
+        };
+
+        combo_caps_word {
+            timeout-ms = <50>;
+            key-positions = <LM4 RM4>;
+            bindings = <&caps_word>;
         };
     };
 };
