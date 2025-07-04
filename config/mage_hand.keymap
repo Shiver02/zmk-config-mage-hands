@@ -19,7 +19,7 @@
 #define NUMBER_LAYER 2
 #define MOUSE_LAYER  3
 #define ALL_LAYERS   0 1 2 3
-#define HOME_N_NUMB 0 2
+#define HOME_N_NUMB  0 2
 
 // Short versions
 #define RGBON   &rgb_ug RGB_ON
@@ -72,7 +72,7 @@
 #define MT_NUMB  &mo_tog NUMBER_LAYER NUMBER_LAYER
 #define MT_MOUSE &mo_tog MOUSE_LAYER  MOUSE_LAYER
 
-#define NUMB_WRD &num_word NUMBER_LAYER
+#define NUMB_WRD &numWrd_tog NUMBER_LAYER NUMBER_LAYER
 
 &num_word {
   continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL SPACE LPAR RPAR>;
@@ -126,7 +126,7 @@ MAKE_HRM(hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 //hrm on number layer
 #define META_1  &hml LMETA N1
 #define CTRL_2  &hml LCTRL N2
-#define SHIFT_3 &hml LSHFT N3
+#define SHIFT_3 &hml LSHFT N3f
 #define ALT_4   &hml LALT  N4
 
 #define ALT_7   &hmr LALT  N7
@@ -335,6 +335,13 @@ MAKE_HRM(hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
             bindings = <&mo>, <&to>;
         };
 
+        numWrd_tog: behavior_mo_to {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&num_word>, <&to>;
+        };
                 
         mo_to_home_from_nav: mo_to_home_from_nav {
             compatible = "zmk,behavior-hold-tap";
