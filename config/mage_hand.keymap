@@ -126,7 +126,7 @@ MAKE_HRM(hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 //hrm on number layer
 #define META_1  &hml LMETA N1
 #define CTRL_2  &hml LCTRL N2
-#define SHIFT_3 &hml LSHFT N3f
+#define SHIFT_3 &hml LSHFT N3
 #define ALT_4   &hml LALT  N4
 
 #define ALT_7   &hmr LALT  N7
