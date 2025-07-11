@@ -103,24 +103,32 @@
 #define THUMBS  69 70 71 72 73        74 75 76 77 78 
 
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
+  ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";            \
+               tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>;         \
+               require-prior-idle-ms = <150>; hold-trigger-on-release;         \
+               hold-trigger-key-positions = <TRIGGER_POS>;)
+               
+#define MAKE_HRM_HOLD(NAME, HOLD, TAP, TRIGGER_POS)                            \
   ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "hold-preferred";      \
                tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>;         \
-               require-prior-idle-ms = <100>; hold-trigger-on-release;         \
+               require-prior-idle-ms = <150>; hold-trigger-on-release;         \
                hold-trigger-key-positions = <TRIGGER_POS>;)
 
-MAKE_HRM(hml,   &kp, &kp,  KEYS_R THUMBS) // Left-hand HRMs.
-MAKE_HRM(hmr,   &kp, &kp,  KEYS_L THUMBS) // Right-hand HRMs.
-MAKE_HRM(hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
+MAKE_HRM     (hml,   &kp, &kp,  KEYS_R THUMBS) // Left-hand HRMs.
+MAKE_HRM_HOLD(hml_h, &kp, &kp,  KEYS_R THUMBS) // Left-hand HRMs.
+MAKE_HRM     (hmr,   &kp, &kp,  KEYS_L THUMBS) // Right-hand HRMs.
+MAKE_HRM_HOLD(hmr_h, &kp, &kp,  KEYS_L THUMBS) // Right-hand HRMs.
+MAKE_HRM     (hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 
-#define META_A  &hml LMETA A
-#define CTRL_S  &hml LCTRL S
-#define SHIFT_D &hml LSHFT D
-#define ALT_F   &hml LALT  F
+#define META_A  &hml   LMETA A
+#define CTRL_S  &hml   LCTRL S
+#define SHIFT_D &hml_h LSHFT D
+#define ALT_F   &hml   LALT  F
 
-#define ALT_J   &hmr LALT  J
-#define SHIFT_K &hmr RSHFT K
-#define CTRL_L  &hmr LCTRL L    //using left ctrl here because right ctrl works weird in canadian multilingual
-#define META_SC &hmr RMETA SEMI
+#define ALT_J   &hmr   LALT  J
+#define SHIFT_K &hmr   RSHFT K
+#define CTRL_L  &hmr_h LCTRL L    //using left ctrl here because right ctrl works weird in canadian multilingual
+#define META_SC &hmr   RMETA SEMI
 
 
 //hrm on number layer
