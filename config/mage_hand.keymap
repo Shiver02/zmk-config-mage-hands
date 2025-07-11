@@ -478,8 +478,8 @@ MAKE_HRM(hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 //           ┃     G3    ┃   SHIFT   ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     N     ┃     M     ┃     ,     ┃     .     ┃     /     ┃   SHIFT   ┃   MUTE    ┃
                B_LIT_DN    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃  DELETE   ┃    TAB    ┃   NUMBER  ┃   NAVIG   ┃   SPACE   ┃   ┃   DELETE  ┃   SPACE   ┃   ENTER   ┃    TAB    ┃ BACKSPACE ┃
-                                        &kp DEL     &kp TAB     NUMB_WRD     MT_NAV    &kp SPACE        &kp DEL    &kp SPACE    &kp RET     &kp TAB    &kp BSPC   
+//                                   ┃  DELETE   ┃    TAB    ┃  NUMBER   ┃   NAVIG   ┃   SPACE   ┃   ┃   DELETE  ┃   SPACE   ┃   ENTER   ┃    TAB    ┃ BACKSPACE ┃
+                                        &kp DEL     &kp TAB     MT_NUMB      MT_NAV    &kp SPACE        &kp DEL    &kp SPACE    &kp RET     &kp TAB    &kp BSPC   
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };

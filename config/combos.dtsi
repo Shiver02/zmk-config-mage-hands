@@ -134,13 +134,13 @@ macros {
         combo_numb_layer {
             timeout-ms = <50>;
             key-positions = <LH2 RH2>;
-            bindings = <&tog NUMBER_LAYER>;
+            bindings = <&to NUMBER_LAYER>;
         };
 
         combo_nav_layer {
             timeout-ms = <50>;
             key-positions = <LH1 RH1>;
-            bindings = <&tog NAVIG_LAYER>;
+            bindings = <&to NAVIG_LAYER>;
         };
     };
 };
