@@ -126,8 +126,8 @@ MAKE_HRM     (hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 #define ALT_F   &hml   LALT  F
 
 #define ALT_J   &hmr   LALT  J
-#define SHIFT_K &hmr   RSHFT K
-#define CTRL_L  &hmr_h LCTRL L    //using left ctrl here because right ctrl works weird in canadian multilingual
+#define SHIFT_K &hmr_h RSHFT K
+#define CTRL_L  &hmr   LCTRL L    //using left ctrl here because right ctrl works weird in canadian multilingual
 #define META_SC &hmr   RMETA SEMI
 
 
