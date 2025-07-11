@@ -68,8 +68,8 @@
 #define B_LIT_DN  &ctrl_alt_btn D
 
 #define MT_HOME  &mo_tog HOME_LAYER   HOME_LAYER
-#define MT_NAV   &mo_tog NAVIG_LAYER  NAVIG_LAYER
-#define MT_NUMB  &mo_tog NUMBER_LAYER NUMBER_LAYER
+#define MT_NAV   &mo     NAVIG_LAYER
+#define MT_NUMB  &mo     NUMBER_LAYER
 #define MT_MOUSE &mo_tog MOUSE_LAYER  MOUSE_LAYER
 
 #define NUMB_WRD &numWrd_tog NUMBER_LAYER NUMBER_LAYER
