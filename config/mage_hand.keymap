@@ -109,9 +109,9 @@
                hold-trigger-key-positions = <TRIGGER_POS>;)
                
 #define MAKE_HRM_SFT(NAME, HOLD, TAP, TRIGGER_POS)                             \
-  ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "hold-preferred";      \
+  ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";            \
                tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>;         \
-               hold-trigger-on-release;                                        \
+               hold-trigger-on-release;         \
                hold-trigger-key-positions = <TRIGGER_POS>;)
 
 MAKE_HRM    (hml,   &kp, &kp,  KEYS_R THUMBS) // Left-hand HRMs.
