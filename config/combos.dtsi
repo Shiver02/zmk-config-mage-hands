@@ -68,8 +68,8 @@ ZMK_COMBO(rminus,    &kp MINUS,  51 65, HOME_N_NUMB,  COMBO_TERM_FAST, COMBO_IDL
 //split combos
 //left
 ZMK_COMBO(lf2,    &kp F2,    30 32, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lf3,    &f3_f3,    44 46, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LALT),     KEYS_R)
-ZMK_COMBO(rf5,    &kp F5,    58 60, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lf3,    &f5_f5,    44 46, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST, LC(LALT),     KEYS_R)
+ZMK_COMBO(lf5,    &kp F9,    58 60, ALL_LAYERS, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 //right
 ZMK_COMBO(rf10,   &kp F10,   35 37, HOME_LAYER, COMBO_TERM_FAST, COMBO_IDLE_FAST)
@@ -95,7 +95,7 @@ SIMPLE_MORPH(undr_undr, SFT, &kp UNDER, &kp UNDER)
 SIMPLE_MORPH(dllr_at,   SFT, &kp DLLR,  &kp AT)
 
 //for spread combos
-SIMPLE_MORPH(f3_f3,     SFT, &kp F3,    &kp F3)
+SIMPLE_MORPH(f5_f5,     SFT, &kp F5,    &kp F5)
 SIMPLE_MORPH(f11_f11,   SFT, &kp F11,   &kp F11)
 SIMPLE_MORPH(f5_f6,     SFT, &kp F5,    &kp F6)
 SIMPLE_MORPH(f8_f7,     SFT, &kp F8,    &kp F7)
