@@ -596,7 +596,7 @@ MAKE_HRM    (hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
                  &trans      &trans    &kp LCTRL     &kp Z       &kp S       &kp C       &kp V           &trans      &trans      &trans      &trans      &trans      &trans      &trans  
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃
-                                         &trans      &trans      &trans      &tran      &trans           T_HOME      &trans      &trans      &trans      &trans 
+                                         &trans      &trans      &trans      &trans     &trans           T_HOME      &trans      &trans      &trans      &trans 
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
