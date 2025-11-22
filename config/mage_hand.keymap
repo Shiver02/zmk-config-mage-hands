@@ -18,7 +18,8 @@
 #define NAVIG_LAYER  1
 #define NUMBER_LAYER 2
 #define MOUSE_LAYER  3
-#define ALL_LAYERS   0 1 2 3
+#define GAMING_LAYER  4
+#define ALL_LAYERS   0 1 2 3 4
 #define HOME_N_NUMB  0 2
 
 // Short versions
@@ -68,8 +69,10 @@
 #define B_LIT_DN  &ctrl_alt_btn D
 
 #define MT_HOME  &mo_tog HOME_LAYER   HOME_LAYER
+#define T_HOME   &to     HOME_LAYER
 #define MT_NAV   &mo     NAVIG_LAYER
 #define MT_NUMB  &mo     NUMBER_LAYER
+#define T_GAME   &to     GAMING_LAYER
 #define MT_MOUSE &mo_tog MOUSE_LAYER  MOUSE_LAYER
 
 #define NUMB_WRD &numWrd_tog NUMBER_LAYER NUMBER_LAYER
@@ -488,8 +491,8 @@ MAKE_HRM    (hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 //           ┃     G3    ┃   SHIFT   ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     N     ┃     M     ┃     ,     ┃     .     ┃     /     ┃   SHIFT   ┃   MUTE    ┃
                B_LIT_DN    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                   ┃  DELETE   ┃    TAB    ┃  NUMBER   ┃   NAVIG   ┃   SPACE   ┃   ┃   DELETE  ┃   SPACE   ┃   ENTER   ┃    TAB    ┃ BACKSPACE ┃
-                                        &kp DEL     &kp TAB     MT_NUMB      MT_NAV    &kp SPACE        &kp DEL    &kp SPACE    &kp RET     &kp TAB    &kp BSPC   
+//                                   ┃  DELETE   ┃    TAB    ┃  NUMBER   ┃   NAVIG   ┃   SPACE   ┃   ┃   GAMING  ┃   SPACE   ┃   ENTER   ┃    TAB    ┃ BACKSPACE ┃
+                                        &kp DEL     &kp TAB     MT_NUMB      MT_NAV    &kp SPACE         T_GAME    &kp SPACE    &kp RET     &kp TAB    &kp BSPC   
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
@@ -568,6 +571,32 @@ MAKE_HRM    (hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 //           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃   BACK    ┃           ┃           ┃  FORWARD  ┃           ┃
                                          &trans      &trans      &trans      &trans      &trans        &mkp MB4      &trans      &trans     &mkp MB5     &trans 
+//                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+            >;
+        };
+
+        gaming_layer {
+            display-name = " Gaming";
+            sensor-bindings =                                                                                                                             <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            bindings = <
+//           ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓ 
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃    MOUSE  ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans     //SCROLL
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
+                 &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans      &trans  
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃    TAB    ┃     Q     ┃     2     ┃     E     ┃     R     ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
+                 &trans      &trans     &kp TAB      &kp Q      &kp N2       &kp E       &kp R           &trans      &trans      &trans      &trans      &trans      &trans      &trans  
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃   SHIFT   ┃     A     ┃     W     ┃     D     ┃     F     ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
+                 &trans      &trans    &kp LSHFT     &kp A       &kp W       &kp D       &kp F           &trans      &trans      &trans      &trans      &trans      &trans      &trans  
+//           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//           ┃           ┃           ┃    CTRL   ┃     Z     ┃     S     ┃     C     ┃     V     ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃
+                 &trans      &trans    &kp LCTRL     &kp Z       &kp S       &kp C       &kp V           &trans      &trans      &trans      &trans      &trans      &trans      &trans  
+//           ┗━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┛
+//                                   ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃
+                                         &trans      &trans      &trans      &tran      &trans           T_HOME      &trans      &trans      &trans      &trans 
 //                                   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
             >;
         };
