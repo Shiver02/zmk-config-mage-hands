@@ -18,7 +18,7 @@
 #define NAVIG_LAYER  1
 #define NUMBER_LAYER 2
 #define MOUSE_LAYER  3
-#define GAMING_LAYER  4
+#define GAMING_LAYER 4
 #define ALL_LAYERS   0 1 2 3 4
 #define HOME_N_NUMB  0 2
 
