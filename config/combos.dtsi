@@ -127,7 +127,7 @@ macros {
 
         combo_caps_word {
             timeout-ms = <50>;
-            key-positions = <LM4 RM4>;
+            key-positions = <LM2 RM2>;
             bindings = <&caps_word>;
         };
 
@@ -135,6 +135,13 @@ macros {
             timeout-ms = <50>;
             key-positions = <LH0 RH0>;
             bindings = <&to GAMING_LAYER>;
+        };
+        
+        combo_meta_key {
+            timeout-ms = <50>;
+            key-positions = <LM4 RM4>;
+            bindings = <&kp LMETA>;
+            layers = <HOME_LAYER>; 
         };
 
         /*
