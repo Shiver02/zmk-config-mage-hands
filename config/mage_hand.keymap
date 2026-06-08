@@ -137,7 +137,7 @@ MAKE_HRM    (hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 
 
 //hrm on number layer
-#define META_1  &hml LMETA N1
+//#define META_1  &hml LMETA N1
 #define CTRL_2  &hml LCTRL N2
 #define SHIFT_3 &hml LSHFT N3
 #define ALT_4   &hml LALT  N4
@@ -145,7 +145,7 @@ MAKE_HRM    (hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 #define ALT_7   &hmr LALT  N7
 #define SHIFT_8 &hmr RSHFT N8
 #define CTRL_9  &hmr LCTRL N9    //using left ctrl here because right ctrl works weird in canadian multilingual
-#define META_0  &hmr RMETA N0
+//#define META_0  &hmr RMETA N0
 
 
 //using hrm on mouse layer to help reduce interference with shortcuts - hope it works
@@ -485,8 +485,8 @@ MAKE_HRM    (hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 //           ┃     G1    ┃    TAB    ┃     Q     ┃     W     ┃     E     ┃     R     ┃     T     ┃   ┃     Y     ┃     U     ┃     I     ┃     O     ┃     P     ┃     \     ┃   NEXT    ┃
                B_LIT_TOG   &kp TAB       &kp Q      &kp W        &kp E      &kp R        &kp T           &kp Y       &kp U       &kp I       &kp O       &kp P     &kp BSLH   &kp  C_NEXT
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃     G2    ┃   SPACE   ┃  META_A   ┃  CTRL_S   ┃  SHIFT_D  ┃   ALT_F   ┃     G     ┃   ┃     H     ┃   ALT_J   ┃  SHIFT_K  ┃  CTRL_L   ┃  META_SC  ┃     '     ┃   PREV    ┃
-               B_LIT_UP    &kp SPACE    META_A      CTRL_S      SHIFT_D      ALT_F       &kp G           &kp H       ALT_J      SHIFT_K     CTRL_L      META_SC     &kp SQT   &kp  C_PREV
+//           ┃     G2    ┃   SPACE   ┃     A     ┃  CTRL_S   ┃  SHIFT_D  ┃   ALT_F   ┃     G     ┃   ┃     H     ┃   ALT_J   ┃  SHIFT_K  ┃  CTRL_L   ┃    SEMI   ┃     '     ┃   PREV    ┃
+               B_LIT_UP    &kp SPACE     &kp A      CTRL_S      SHIFT_D      ALT_F       &kp G           &kp H       ALT_J      SHIFT_K     CTRL_L      &kp SEMI    &kp SQT   &kp  C_PREV
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //           ┃     G3    ┃   SHIFT   ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     N     ┃     M     ┃     ,     ┃     .     ┃     /     ┃   SHIFT   ┃   MUTE    ┃
                B_LIT_DN    &kp LSHFT     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH    &kp RSHFT   &kp C_MUTE
@@ -537,8 +537,8 @@ MAKE_HRM    (hmr_m, &kp, &mkp, KEYS_L THUMBS) // Right-hand HRMs.
 //           ┃           ┃           ┃     F1    ┃     F2    ┃     F3    ┃     F4    ┃  F5/F6    ┃   ┃   F8/F7   ┃     F9    ┃    F10    ┃    F11    ┃    F12    ┃           ┃    BT 2   ┃
                  RGBBRI      &trans      &kp F1      &kp F2      &kp F3      &kp F4     &f5_f6           &f8_f7      &kp F9     &kp F10     &kp F11     &kp F12      &trans    BT_PROF 2 
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//           ┃           ┃    ` ~    ┃   META_1  ┃  CTRL_2   ┃  SHIFT_3  ┃   ALT_4   ┃     5     ┃   ┃     6     ┃   ALT_7   ┃  SHIFT_8  ┃   CTRL_9  ┃   META_0  ┃           ┃    BT 3   ┃
-                 RGBBRD    &kp GRAVE     META_1     CTRL_2      SHIFT_3      ALT_4      &kp N5          &kp N6       ALT_7      SHIFT_8      CTRL_9      META_0      &trans    BT_PROF 3  
+//           ┃           ┃    ` ~    ┃     1     ┃  CTRL_2   ┃  SHIFT_3  ┃   ALT_4   ┃     5     ┃   ┃     6     ┃   ALT_7   ┃  SHIFT_8  ┃   CTRL_9  ┃     0     ┃           ┃    BT 3   ┃
+                 RGBBRD    &kp GRAVE     &kp N1     CTRL_2      SHIFT_3      ALT_4      &kp N5          &kp N6       ALT_7      SHIFT_8      CTRL_9      &kp N0      &trans    BT_PROF 3  
 //           ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //           ┃           ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃ BT CLEAR  ┃
                  &trans      &trans      &trans      &trans      &trans      &trans      &trans          &trans      &trans      &trans      &trans      &trans      &trans   &bt BT_CLR 
